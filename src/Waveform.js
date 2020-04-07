@@ -4,6 +4,7 @@ import './Waveform.css';
 
 import audioFile from './audio/pat.mp3';
 let bandcampArr = [1413157771, 4037375649, 2926175440, 4267872102, 2358433489, 3535544007];
+
 // let bandcampArr = [];
 
 //function to conditionally render bandcamp iframes only if there are items in the bandcampArr
@@ -36,7 +37,8 @@ export default class Waveform extends React.Component {
             hideScrollbar: true,
             progressColor: '#EC407A',
             responsive: true,
-            waveColor: '#D1D6DA',
+            waveColor: '#D1D6DA'
+            // audioContext: 'whatever'
           }}
           volume={1}
           zoom={1}
