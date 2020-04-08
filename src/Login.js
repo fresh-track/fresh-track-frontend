@@ -42,7 +42,9 @@ export default class Login extends Component {
                 <input input type="password" value={ this.state.passwordSignUp} onChange={(e) => this.setState({ passwordSignUp: e.target.value})} />
 
                 <button className = "button" onClick={ this.handleSignUp }>Sign up</button>  
+                
                 <br/>
+
                 <input className = "signInEmail" input type ="email" value={ this.state.emailSignIn} onChange={(e) => this.setState({ emailSignIn: e.target.value})} />
                 <input input type="password" value={ this.state.passwordSignIn} onChange={(e) => this.setState({ passwordSignIn: e.target.value})} />
 
