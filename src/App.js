@@ -1,48 +1,39 @@
-import React, { Component } from 'react';
-import AudioAnalyser from './AudioAnalyser';
+import React from 'react';
+import Waveform from './Waveform.js';
+import Login from './Login';
+// import Header from './Header.js';
+// import './App.css';
+import { 
+    BrowserRouter, 
+    Route,
+    Redirect,
+ } from 'react-router-dom';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      audio: null
-    };
-    this.toggleMicrophone = this.toggleMicrophone.bind(this);
-  }
+const isLoggedIn = () => JSON.parse(localStorage.getItem('user'));
 
-  async getMicrophone() {
-    const audio = await navigator.mediaDevices.getUserMedia({
-      audio: true,
-      video: false
-    });
-    this.setState({ audio });
-  }
+export default class App extends React.Component {
+  render () {
+    return(
+    <div className="App">
 
-  stopMicrophone() {
-    this.state.audio.getTracks().forEach(track => track.stop());
-    this.setState({ audio: null });
-  }
+        <BrowserRouter>
+            <Route path="/" render={() =>
+            isLoggedIn()
+                ? <Waveform />
+                : <Redirect to='/login' />  
+          }/>
+            <Route path='/login' component={Login} />       
+        </BrowserRouter>
+    </div>
+/* <div className="App">
 
-  toggleMicrophone() {
-    if (this.state.audio) {
-      this.stopMicrophone();
-    } else {
-      this.getMicrophone();
-    }
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <div className="controls">
-          <button onClick={this.toggleMicrophone}>
-            {this.state.audio ? 'Stop microphone' : 'Get microphone input'}
-          </button>
-        </div>
-        {this.state.audio ? <AudioAnalyser audio={this.state.audio} /> : ''}
-      </div>
+<BrowserRouter>
+    <Route path="/" render={() =>
+     <Redirect to='/login' />  
+  }/>
+    <Route path='/login' component={Login} />       
+</BrowserRouter>
+</div>  */
     );
   }
 }
-
-export default App;
