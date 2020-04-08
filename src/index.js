@@ -18,10 +18,14 @@
 // serviceWorker.unregister();
 import React from "react";
 import ReactDOM from "react-dom";
-import ReactJkMusicPlayer from "react-jinke-music-player";
-import "react-jinke-music-player/assets/index.css";
+import Player from "./Player"
+import Waveform from "./Waveform";
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <ReactJkMusicPlayer getAudioInstance={instance => this.audioInstance = instance}/>,
+  <Player />,
+  // <Waveform />,
+  // <ReactJkMusicPlayer {...options} />,
   document.getElementById("root")
 );
+serviceWorker.unregister();
