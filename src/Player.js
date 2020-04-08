@@ -52,16 +52,24 @@ const options = {
 export default class Player extends React.Component {
 
   render () {
+    // const customDownloader = (downloadInfo) => {
+    //   console.log(downloadInfo)
+    //   const url = `https://cors-anywhere.herokuapp.com/${downloadInfo.src}`
+    //   fetch(url, {
+    //     headers: {
+    //       origin: null
+    //     }
+    //   })
+    //   .then(res => res.blob())
+    //   .then(blob => saveAs(blob, downloadInfo.filename))
+    // }
+
     const customDownloader = (downloadInfo) => {
-      console.log(downloadInfo)
-      const url = `https://cors-anywhere.herokuapp.com/${downloadInfo.src}` // a.mp3
-      fetch(url, {
-        headers: {
-          origin: null
-        }
-      })
-      .then(res => res.blob())
-      .then(blob => saveAs(blob, downloadInfo.filename))
+      const link = document.createElement('a')
+      link.href = downloadInfo.src // a.mp3
+      link.download = downloadInfo.filename || 'test'
+      document.body.appendChild(link)
+      link.click()
     }
    
     return (
