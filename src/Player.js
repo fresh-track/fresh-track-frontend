@@ -1,7 +1,7 @@
 import React from 'react';
 // import ReactDOM from "react-dom";
 import ReactJkMusicPlayer from "react-jinke-music-player";
-import { saveAs } from 'file-saver';
+// import { saveAs } from 'file-saver';
 import "react-jinke-music-player/assets/index.css";
 import AudioAnalyser from './AudioAnalyser';
 
@@ -17,16 +17,16 @@ function bandcampRender(){
 };
 
 const audioList1 = [
-  {
-    name: 'push',
-    singer: 'budge',
-    cover: 'https://emby.media/community/uploads/inline/355992/5c1cc71abf1ee_genericcoverart.jpg',
-    musicSrc: () => {
-      return Promise.resolve(
-        'https://drive.google.com/u/0/uc?id=1iSDrOQH7IG8OFczKrVX19IyAlO5HNDfX&export=download'
-      )
-    },
-  },
+  // {
+  //   name: 'push',
+  //   singer: 'budge',
+  //   cover: 'https://emby.media/community/uploads/inline/355992/5c1cc71abf1ee_genericcoverart.jpg',
+  //   musicSrc: () => {
+  //     return Promise.resolve(
+  //       'https://drive.google.com/u/0/uc?id=1iSDrOQH7IG8OFczKrVX19IyAlO5HNDfX&export=download'
+  //     )
+  //   },
+  // },
   {
     name: 'Despacito',
     singer: 'Luis Fonsi',
