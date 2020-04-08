@@ -28,8 +28,7 @@ const audioList1 = [
   {
     name: 'Despacito',
     singer: 'Luis Fonsi',
-    cover:
-      'http://res.cloudinary.com/alick/image/upload/v1502689731/Despacito_uvolhp.jpg',
+    
     musicSrc: () => {
       return Promise.resolve(
         'http://res.cloudinary.com/alick/video/upload/v1502689683/Luis_Fonsi_-_Despacito_ft._Daddy_Yankee_uyvqw9.mp3'
@@ -40,7 +39,13 @@ const audioList1 = [
 
 const options = {
   audioLists: audioList1,
-  autoPlay: false
+  autoPlay: false,
+  remember: false,
+  mode: 'full',
+  showMiniProcessBar: true,
+  autoHiddenCover: true,
+  spaceBar: true,
+
 }
 
 export default class Player extends React.Component {
