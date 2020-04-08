@@ -2,7 +2,10 @@ import React from 'react';
 import ReactWaves from '@dschoon/react-waves';
 import './Waveform.css';
 
-import audioFile from './audio/pat.mp3';
+// import audioFile from './audio/pat.mp3';
+
+const audioFile = 'https://cors-anywhere.herokuapp.com/https://drive.google.com/u/0/uc?id=11XJo0wqvvusgml3bNxUK3TwpQkhzriDV';
+
 let bandcampArr = [1413157771, 4037375649, 2926175440, 4267872102, 2358433489, 3535544007];
 
 // let bandcampArr = [];
@@ -20,6 +23,7 @@ export default class Waveform extends React.Component {
   state = {
     playing: false
   };
+
   render () {
     
     return (
@@ -43,7 +47,9 @@ export default class Waveform extends React.Component {
           volume={1}
           zoom={1}
           playing={this.state.playing}
+          onLoading={this.onLoading}
         />
+        <div id='wave-spectrogram' style={{ width: '623px', margin: '0 auto' }}/>
 
       { bandcampRender() }
 
