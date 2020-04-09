@@ -4,6 +4,7 @@ import ReactJkMusicPlayer from "react-jinke-music-player";
 // import { saveAs } from 'file-saver';
 import "react-jinke-music-player/assets/index.css";
 import AudioAnalyser from './AudioAnalyser';
+import './Player.css';
 
 let bandcampArr = [1413157771, 4037375649, 2926175440, 4267872102, 2358433489, 3535544007];
 
