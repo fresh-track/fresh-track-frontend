@@ -39,13 +39,13 @@ export default class Login extends Component {
                 <TextField id="standard-basic" label="Username" className="signUpUsername" type="username" value={this.state.usernameSignUp} onChange={(e) => this.setState({ usernameSignUp: e.target.value })} />
                 <TextField id="standard-basic" label="Email" className="signUpEmail" type="email" value={this.state.emailSignUp} onChange={(e) => this.setState({ emailSignUp: e.target.value })} />
                 <TextField id="standard-password-input" label="Password" type="password" autoComplete="current-password" value={this.state.passwordSignUp} onChange={(e) => this.setState({ passwordSignUp: e.target.value })} />
-                <Button variant="contained" color="primary" size="small" className="button" onClick={this.handleSignUp}>Sign up</Button>
+                <Button id="signupButton" variant="contained" color="primary" size="small" className="button" onClick={this.handleSignUp}>Sign up</Button>
             </div>
         } else {
             return <div className="signlogdiv">
                 <TextField id="standard-basic" label="Email" className="signInEmail" type="email" value={this.state.emailSignIn} onChange={(e) => this.setState({ emailSignIn: e.target.value })} />
                 <TextField id="standard-password-input" label="Password" type="password" autoComplete="current-password" value={this.state.passwordSignIn} onChange={(e) => this.setState({ passwordSignIn: e.target.value })} />
-                <Button variant="contained" color="primary" size="small" className="button" onClick={this.handleSignIn}>Login</Button>
+                <Button id="loginButton" variant="contained" color="primary" size="small" className="button" onClick={this.handleSignIn}>Login</Button>
             </div>
         }
     }
@@ -85,7 +85,7 @@ export default class Login extends Component {
     }
 
     logOutButton = () => {
-        if (this.props.user) return <div className="login-div"><Button variant="contained" color="secondary" size="small" className="button" onClick={e => this.handleLogOut()}>Logout</Button></div>;
+        if (this.props.user) return <div className="login-div"><Button variant="contained" color="secondary" size="small" id="logoutbutton" className="logoutButton" onClick={e => this.handleLogOut()}>Logout</Button></div>;
     }
 
     handleLogOut = () => {
@@ -97,7 +97,7 @@ export default class Login extends Component {
     render() {
         return (
             <div className="signInSignUp">
-                <Button variant="contained" color="secondary" size="small" onClick={e => this.setState({logged: !this.state.logged})}>{this.state.logged ? "Create an Account": "Go to Login"}</Button>
+                <Button id="createAccountButton" variant="contained" color="secondary" size="small" onClick={e => this.setState({logged: !this.state.logged})}>{this.state.logged ? "Create an Account": "Go to Login"}</Button>
                 {this.signUpOrLogin()}
                 {this.logOutButton()}
                 <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.closeSB}>

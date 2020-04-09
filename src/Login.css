@@ -30,3 +30,44 @@ body {
 .signlogdiv button {
   margin: 20px
 }
+
+.button {
+  color: rgb(8, 18, 24);
+  background-color:rgb(32, 87, 87);
+}
+
+.update {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+#loginButton {
+  color:rgb(255, 255, 255);
+  background-color: rgb(32, 87, 87) ;
+}
+
+#logoutbutton {
+  color:rgb(255, 255, 255);
+  background-color: rgb(131, 25, 126) ;
+}
+
+#signupButton {
+  color:rgb(255, 255, 255);
+  background-color: rgb(32, 87, 87) ;
+}
+
+#createAccountButton {
+  color:rgb(255, 255, 255);
+  background-color: rgb(32, 87, 87) ;
+}
+
+.login-div {
+  color: rgb(131, 25, 126);
+  cursor: pointer;
+}
+
+.login-div:hover {
+  color: rgb(211, 83, 200)
+}
+

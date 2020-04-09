@@ -36,11 +36,9 @@ function driveRender(drive){
         singer: `${drive._id}`,
         cover: 'https://emby.media/community/uploads/inline/355992/5c1cc71abf1ee_genericcoverart.jpg',
         musicSrc: () => {
-          return fetch(`https://cors-anywhere.herokuapp.com/${value.url}`, {
-            method: 'GET',
-            mode: 'cors',
+          return fetch(`https://alchemy-anywhere.herokuapp.com/${value.url}`, {
             headers: {
-              "X-Requested-With": "XMLHttpRequest"
+              origin: null
             }
           })
             .then(res => res.blob())
@@ -139,6 +137,3 @@ export default class Player extends React.Component {
     )
   }
 }
-
-// 'https://drive.google.com/u/0/uc?id=11XJo0wqvvusgml3bNxUK3TwpQkhzriDV&export=download'
-// https://www.dropbox.com/s/ru4za6l9u1s93mh/DF%20Kick.wav?dl=1
