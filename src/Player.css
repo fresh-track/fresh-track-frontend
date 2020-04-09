@@ -19,3 +19,7 @@
 .bandcamp-bottom {
   margin-bottom: 80px;
 }
+
+.drawer {
+  overflow: scroll;
+}

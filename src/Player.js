@@ -1,8 +1,14 @@
 import React from 'react';
+import { Menu } from 'antd';
+// import Icon from '@ant-design/icons';
 import ReactJkMusicPlayer from "react-jinke-music-player";
 import "react-jinke-music-player/assets/index.css";
 import AudioAnalyser from './AudioAnalyser';
 import './Player.css';
+import Drawer from 'rc-drawer';
+
+// const SubMenu = Menu.SubMenu;
+// const MenuItemGroup = Menu.ItemGroup;
 
 let bandcampArr = [1413157771, 4037375649, 2926175440, 4267872102, 2358433489, 3535544007];
 // let driveArr = ['1iSDrOQH7IG8OFczKrVX19IyAlO5HNDfX', '135T3wOSF_o6VMamNfmrgt9kfTbVucWDE', '1grL_7KMiGpzAJU4jP6dBLq-9RzfyD70l'];
@@ -76,6 +82,25 @@ const options = {
 }
 
 export default class Player extends React.Component {
+
+  state = {
+    open: true,
+  }
+
+  onChange = (bool) => {
+    console.log('change: ', bool);
+  }
+  onTouchEnd = () => {
+    this.setState({
+      open: false,
+    });
+  }
+  onSwitch = () => {
+    this.setState({
+      open: !this.state.open,
+    });
+  }
+
   constructor(props){
     super(props)
     this.state = {
@@ -83,10 +108,20 @@ export default class Player extends React.Component {
     }
   }
   componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        open: false,
+      });
+    }, 2000);
     const audio = document.querySelector('audio')
     // console.log(audio)
     this.setState({audio})
   }
+  // componentDidMount() {
+  //   const audio = document.querySelector('audio')
+  //   // console.log(audio)
+  //   this.setState({audio})
+  // }
 
   render () {
     const customDownloader = (downloadInfo) => {
@@ -98,13 +133,53 @@ export default class Player extends React.Component {
     }
    
     return (
+      <div>
+        <Drawer
+          className="drawer"
+          onChange={this.onChange}
+          open={this.state.open}
+          onClose={this.onTouchEnd}
+          handler={false}
+          level={null}
+          afterVisibleChange={(c) => {
+            console.log('transitionEnd: ', c);
+          }}
+          width="300px"
+          height="300px"
+          placement="bottom"
+        >
+          <Menu
+            defaultSelectedKeys={['1']}
+            defaultOpenKeys={['sub1']}
+            mode="inline"
+          >
+              { bandcampRender() }
+            
+            {/* <SubMenu
+              key="sub4"
+              title={<span><Icon type="setting" /><span>Navigation Three</span></span>}
+            >
+              <Menu.Item key="9">Option 9</Menu.Item>
+              <Menu.Item key="10">Option 10</Menu.Item>
+              <Menu.Item key="11">Option 11</Menu.Item>
+              <Menu.Item key="12">Option 12</Menu.Item>
+            </SubMenu> */}
+          </Menu>
+        </Drawer>
       <div className="player">
         <div className='visualizer'>
         {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
         </div>
+        <button
+            onClick={this.onSwitch}
+            style={{ height: 24, width: 100, marginLeft: 20, color: '#000', lineHeight: '24px' }}
+          >
+            {!this.state.open ? 'bandcamp' : 'bandcamp close'}
+          </button>
         <ReactJkMusicPlayer customDownloader={customDownloader} {...options} />
-        { bandcampRender() }
+        {/* { bandcampRender() } */}
         <div className="bandcamp-bottom"></div>
+      </div>
       </div>
     )
   }
