@@ -1,7 +1,10 @@
 import React from 'react';
 // import ReactDOM from "react-dom";
 import ReactJkMusicPlayer from "react-jinke-music-player";
+// import { saveAs } from 'file-saver';
 import "react-jinke-music-player/assets/index.css";
+import AudioAnalyser from './AudioAnalyser';
+import './Player.css';
 
 let bandcampArr = [1413157771, 4037375649, 2926175440, 4267872102, 2358433489, 3535544007];
 
@@ -15,16 +18,16 @@ function bandcampRender(){
 };
 
 const audioList1 = [
-  {
-    name: 'push',
-    singer: 'budge',
-    cover: 'https://emby.media/community/uploads/inline/355992/5c1cc71abf1ee_genericcoverart.jpg',
-    musicSrc: () => {
-      return Promise.resolve(
-        'https://drive.google.com/u/0/uc?id=11XJo0wqvvusgml3bNxUK3TwpQkhzriDV&export=download'
-      )
-    },
-  },
+  // {
+  //   name: 'push',
+  //   singer: 'budge',
+  //   cover: 'https://emby.media/community/uploads/inline/355992/5c1cc71abf1ee_genericcoverart.jpg',
+  //   musicSrc: () => {
+  //     return Promise.resolve(
+  //       'https://drive.google.com/u/0/uc?id=1iSDrOQH7IG8OFczKrVX19IyAlO5HNDfX&export=download'
+  //     )
+  //   },
+  // },
   {
     name: 'Despacito',
     singer: 'Luis Fonsi',
@@ -49,14 +52,48 @@ const options = {
 }
 
 export default class Player extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      audio: null
+    }
+  }
+  componentDidMount() {
+    const audio = document.querySelector('audio')
+    console.log(audio)
+    this.setState({audio})
+  }
 
   render () {
-    
+    // const customDownloader = (downloadInfo) => {
+    //   console.log(downloadInfo)
+    //   const url = `https://cors-anywhere.herokuapp.com/${downloadInfo.src}`
+    //   fetch(url, {
+    //     headers: {
+    //       origin: null
+    //     }
+    //   })
+    //   .then(res => res.blob())
+    //   .then(blob => saveAs(blob, downloadInfo.filename))
+    // }
+
+    const customDownloader = (downloadInfo) => {
+      const link = document.createElement('a')
+      link.href = downloadInfo.src // a.mp3
+      link.download = downloadInfo.filename || 'test'
+      document.body.appendChild(link)
+      link.click()
+    }
+   
     return (
       <div className="player">
-        <ReactJkMusicPlayer {...options} />
+        {/* {this.state.audio && <AudioAnalyser audio={this.state.audio} />} */}
+        <ReactJkMusicPlayer customDownloader={customDownloader} {...options} />
         { bandcampRender() }
       </div>
     )
   }
 }
+
+// 'https://drive.google.com/u/0/uc?id=11XJo0wqvvusgml3bNxUK3TwpQkhzriDV&export=download'
+// https://www.dropbox.com/s/ru4za6l9u1s93mh/DF%20Kick.wav?dl=1

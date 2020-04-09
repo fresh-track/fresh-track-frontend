@@ -1,6 +1,9 @@
 import React from 'react';
-import Waveform from './Waveform.js';
+import Player from './Player';
 import Login from './Login';
+import Header from './Header';
+import Profile from './Profile';
+import About from './About';
 import PrivateRoute from './PrivateRoute.js';
 // import Header from './Header.js';
 // import './App.css';
@@ -20,10 +23,13 @@ export default class App extends React.Component {
   render () {
     return(
     <div className="App">
+        <Header />
         <BrowserRouter>
             <Switch>
-            <PrivateRoute exact path="/" component={Waveform} user={this.state.user}/>
+            <PrivateRoute exact path="/" component={Player} user={this.state.user}/>
             <Route exact path="/login" render={(props) => <Login {...props} setUser={this.setUser} user={this.state.user}/>}  />
+            <Route exact path='/profile' component={Profile} />
+            <Route exact path='/about' component={About} />
           </Switch>     
         </BrowserRouter>
     </div>
