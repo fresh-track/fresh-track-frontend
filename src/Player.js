@@ -134,50 +134,18 @@ export default class Player extends React.Component {
    
     return (
       <div>
-        <Drawer
-          className="drawer"
-          onChange={this.onChange}
-          open={this.state.open}
-          onClose={this.onTouchEnd}
-          handler={false}
-          level={null}
-          afterVisibleChange={(c) => {
-            console.log('transitionEnd: ', c);
-          }}
-          width="300px"
-          height="300px"
-          placement="bottom"
-        >
-          <Menu
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            mode="inline"
-          >
-              { bandcampRender() }
-            
-            {/* <SubMenu
-              key="sub4"
-              title={<span><Icon type="setting" /><span>Navigation Three</span></span>}
-            >
-              <Menu.Item key="9">Option 9</Menu.Item>
-              <Menu.Item key="10">Option 10</Menu.Item>
-              <Menu.Item key="11">Option 11</Menu.Item>
-              <Menu.Item key="12">Option 12</Menu.Item>
-            </SubMenu> */}
-          </Menu>
-        </Drawer>
-      <div className="player">
-        <div className='visualizer'>
-        {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
-        </div>
         <button
             onClick={this.onSwitch}
             style={{ height: 24, width: 100, marginLeft: 20, color: '#000', lineHeight: '24px' }}
           >
-            {!this.state.open ? 'bandcamp' : 'bandcamp close'}
+            {!this.state.open ? 'bandcamp' : 'close'}
           </button>
+      <div className="player">
+        <div className='visualizer'>
+        {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
+        </div>
+        { this.state.open && bandcampRender() }
         <ReactJkMusicPlayer customDownloader={customDownloader} {...options} />
-        {/* { bandcampRender() } */}
         <div className="bandcamp-bottom"></div>
       </div>
       </div>
