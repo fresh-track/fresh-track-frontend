@@ -25,7 +25,7 @@ export default class App extends React.Component {
     return(
     <div className="App">
         <BrowserRouter>
-        <Header />
+        <Header user={this.state.user} setUser={this.setUser}/>
             <Switch>
             <PrivateRoute exact path="/" component={Player} user={this.state.user}/>
             <Route exact path="/login" render={(props) => <Login {...props} setUser={this.setUser} user={this.state.user}/>}  />

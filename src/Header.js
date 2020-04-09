@@ -6,12 +6,12 @@ import './Header.css';
 export default class Header extends Component {
   logOutButton = () => {
     if (this.props.user) return <div className="login-div"><Button variant="contained" color="secondary" size="small" className="button" onClick={e => this.handleLogOut()}>Logout</Button></div>;
-}
+  }
 
   handleLogOut = () => {
-      localStorage.clear();
-      this.props.setUser({ body: null });
-      this.props.history.push('/');
+    localStorage.clear();
+    this.props.setUser({ body: null });
+    // this.props.history.push('/');
   }
   render() {
     return (
