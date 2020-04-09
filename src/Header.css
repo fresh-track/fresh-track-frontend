@@ -1,6 +1,6 @@
 body {
   color: white;
-  background-color: black;
+  background-color: rgb(255, 255, 255);
   /* text-shadow: 2px 2px 8px rgb(97, 223, 232); */
   /* unvisited link */
 }
@@ -32,7 +32,8 @@ a:active {
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
-  min-height: 59px;
+  min-height: 4rem;
+  background-color: rgb(240, 240, 240);
 }
 
 .main-title {
@@ -53,18 +54,18 @@ a:active {
 }
 
 .link {
-  padding-left: 22px;
+  padding-left: 15px;
   font-size: .9rem;
 }
 
 .teamGitHubLink {
-  padding-left: 22px;
+  padding-left: 15px;
   padding-right: .5rem;
   font-size: .9rem;
 }
 
 .login-div {
-  padding-left: 22px;
+  padding-left: 15px;
   margin-right: 1.5rem;
   font-size: .9rem;
 }
