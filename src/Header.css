@@ -5,12 +5,14 @@ body {
   /* unvisited link */
 }
 a:link {
-  color: red;
+  color: rgb(32, 87, 87);
+  text-decoration: none;
 }
 
 /* visited link */
 a:visited {
   color: rgb(32, 87, 87);
+  text-decoration: none;
 }
 
 /* mouse over link */
@@ -25,6 +27,7 @@ a:hover {
 /* selected link */
 a:active {
   color: rgb(142, 142, 226);
+  text-decoration: none;
 }
 
 .mainHeader {
