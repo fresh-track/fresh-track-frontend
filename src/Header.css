@@ -16,11 +16,23 @@ a:visited {
 /* mouse over link */
 a:hover {
   color: rgb(83, 175, 211);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+  transition-delay: 0s;
 }
 
 /* selected link */
 a:active {
-  color: blue;
+  color: rgb(142, 142, 226);
+}
+
+.mainHeader {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-height: 59px;
 }
 
 .main-title {
@@ -30,11 +42,29 @@ a:active {
   font-size: 1.75rem;
   color: rgb(32, 87, 87);
   margin-bottom: .2rem;
+  margin-left: 1.5rem;
 }
 
 .navBar {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: row;
   font-size: .80rem;
+}
+
+.link {
+  padding-left: 22px;
+  font-size: .9rem;
+}
+
+.teamGitHubLink {
+  padding-left: 22px;
+  padding-right: .5rem;
+  font-size: .9rem;
+}
+
+.login-div {
+  padding-left: 22px;
+  margin-right: 1.5rem;
+  font-size: .9rem;
 }
