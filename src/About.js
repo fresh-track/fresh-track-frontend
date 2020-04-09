@@ -8,7 +8,7 @@ export default class About extends Component {
     return (
       <div className="about-container">
         
-        <h1> the fesh-track trio </h1>
+        <h1> the fresh-track trio </h1>
 
         <p> 
         The fresh-track team is brought to you by a Portland, Or dev trio dedicated to bringing music lovers a new kind of music sharing experience. Fresh-track is a unique file repository for artists to upload, share, and collaborate on their unreleased music tracks from their Soundcloud, Bandcamp, Google Drive and Drop Box music libraries.
