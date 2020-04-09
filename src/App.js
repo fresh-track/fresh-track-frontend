@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-// import OScope from './OScope';
 import Player from './Player';
 import Header from './Header';
 import Profile from './Profile';
