@@ -123,8 +123,8 @@ export default class Player extends React.Component {
    
     return (
       <div className="player">
-        {/* {this.state.audio && <AudioAnalyser audio={this.state.audio} />} */}
-        <AudioAnalyser />
+        {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
+        {/* <AudioAnalyser /> */}
         <ReactJkMusicPlayer customDownloader={customDownloader} {...options} />
         { bandcampRender() }
       </div>
