@@ -3,3 +3,19 @@
   text-align: center;
 }
 
+.visualizer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  /* max-width: 200px;
+  max-width: 200px; */
+}
+
+.bandcamp {
+  margin: 10px;
+}
+
+.bandcamp-bottom {
+  margin-bottom: 80px;
+}

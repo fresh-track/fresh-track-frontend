@@ -11,7 +11,7 @@ let bandcampArr = [1413157771, 4037375649, 2926175440, 4267872102, 2358433489, 3
 function bandcampRender(){
   if(bandcampArr.length > 0){
     return bandcampArr.map((value, index) => {
-      return <iframe key={index} style={{border: 0, width: 400+'px', height: 373+'px'}} src={`https://bandcamp.com/EmbeddedPlayer/album=${value}/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/`} seamless title="whatever"></iframe>
+      return <iframe className='bandcamp' key={index} style={{border: 0, width: 400+'px', height: 373+'px'}} src={`https://bandcamp.com/EmbeddedPlayer/album=${value}/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/`} seamless title="whatever"></iframe>
     })
   }
 };
@@ -99,9 +99,12 @@ export default class Player extends React.Component {
    
     return (
       <div className="player">
+        <div className='visualizer'>
         {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
+        </div>
         <ReactJkMusicPlayer customDownloader={customDownloader} {...options} />
         { bandcampRender() }
+        <div className="bandcamp-bottom"></div>
       </div>
     )
   }
