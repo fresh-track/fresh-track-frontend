@@ -83,7 +83,7 @@ export default class Login extends Component {
     }
 
     logOutButton = () => {
-        if (this.props.user) return <div className="login-div"><Button variant="contained" color="secondary" size="small" className="button" onClick={e => this.handleLogOut()}>Logout</Button></div>;
+        if (this.props.user) return <div className="login-div"><Button variant="contained" color="secondary" size="small" id="logoutbutton" className="logoutButton" onClick={e => this.handleLogOut()}>Logout</Button></div>;
     }
 
     handleLogOut = () => {
