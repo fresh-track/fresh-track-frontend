@@ -22,9 +22,9 @@ export default class Header extends Component {
       <div>
       <div className="main-title">fresh-track</div>
       <div className="navBar">
-        <Link to='/'>/player/</Link> <></>
-        <Link to='/profile'>/profile/</Link> <></>
-        <Link to='/about'>/about/</Link> <></>
+        <Link to='/'>| player </Link> <></>
+        <Link to='/profile'>| profile |</Link> <></>
+        <Link to='/about'> about |</Link> <></>
         {this.logOutButton()}
       </div>
       </div>

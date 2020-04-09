@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+h1 {
+    font-size: 2.5rem;
+    font-family: 'Roboto', san-serif;
+    letter-spacing: .6em;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.0rem;
+    font-family: 'Roboto', san-serif;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+p {
+    font-size: 1.0rem;
+    font-family: 'Roboto', sans-serif;
+    opacity: .8;
+    line-height: 1.5em;
+    text-align: center;
+    margin-top: 80px;
+    margin-left: 15%;
+    margin-right: 15%;  
+}
+.Members {
+    font-size: 22px;
+    font-family: 'Roboto', sans-serif;
+    opacity: .8;
+    line-height: 1.75em;
+    text-align: center;
+    margin-top: 80px;
+    margin-left: 15%;
+    margin-right: 15%;  
+    font-style: italic;
+}
+h3 {
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    opacity: .8;
+    line-height: 2em;
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+}
+a.social {
+    margin: 0 1rem;
+    transition: transform 250ms;
+    display: inline-block;
+    
+}
+a.linkednin {
+    color: #5eaa64;
+} 
+a.github {
+    color: #5eaa64;
+}
+a.social:hover {
+    transform: translateY(-2px);
+}
+.photo img {
+    display: inline;
+    height: 18rem;
+    width: 18rem;
+    box-shadow: 0 4px 26px  rgb(83, 175, 211);
+    margin: 0 1rem;
+    margin-top: 25px;
+}
+
+.team-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 80px;
+    width: 100%;
+}
+
+.about-container {
+    color: rgb(32, 87, 87);
+    height: auto;
+    top: 14%;
+    left: 0%;  
+    width: 100%;
+}
+
+.socialicons {
+    text-align: center;
+    margin-top: 20px;
+}
