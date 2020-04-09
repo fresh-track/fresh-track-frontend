@@ -43,7 +43,7 @@ a:active {
   font-size: 1.75rem;
   color: rgb(32, 87, 87);
   margin-bottom: .2rem;
-  margin-left: 1.5rem;
+  margin-left: 3.5rem;
 }
 
 .navBar {
@@ -66,6 +66,6 @@ a:active {
 
 .login-div {
   padding-left: 15px;
-  margin-right: 1.5rem;
+  margin-right: 3.5rem;
   font-size: .9rem;
 }
