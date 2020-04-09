@@ -10,10 +10,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "init": "^0.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-jinke-music-player": "^4.10.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "superagent": "^5.2.2"
@@ -42,18 +40,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": "",
-  "main": "index.js",
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fresh-track/fresh-track-frontend.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/fresh-track/fresh-track-frontend/issues"
-  },
-  "homepage": "https://github.com/fresh-track/fresh-track-frontend#readme"
+  }
 }
