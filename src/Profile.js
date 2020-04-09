@@ -24,14 +24,10 @@ handleUpdate = async () => {
   this.props.history.push('/');
 }
 
-// http://fresh-track-staging.herokuapp.com/api/v1/drive?driveFolder=Goldfoot%20Album
-
 handleAddDrive = async () => {
   console.log('work')
-  const updateProfile = await request.get(`${process.env.REACT_APP_DB_URL}/api/v1/drive/add?driveFolder=${this.state.driveFolder}`).withCredentials();
-  console.log(updateProfile);
-  // localStorage.setItem('user', JSON.stringify(updateProfile.body));
-  // this.props.history.push('/');
+  const addDrive = await request.get(`${process.env.REACT_APP_DB_URL}/api/v1/drive/add?driveFolder=${this.state.driveFolder}`).withCredentials();
+  window.open(addDrive.text)
 }
 
 handleAddDropbox = async () => {
