@@ -22,3 +22,9 @@ a:hover {
 a:active {
   color: blue;
 }
+
+.navBar {
+  display: flex;
+  flex-direction: row;
+
+}
