@@ -7,8 +7,9 @@ import "react-jinke-music-player/assets/index.css";
 import './Player.css';
 
 let bandcampArr = [1413157771, 4037375649, 2926175440, 4267872102, 2358433489, 3535544007];
-let driveArr = ['1iSDrOQH7IG8OFczKrVX19IyAlO5HNDfX', '135T3wOSF_o6VMamNfmrgt9kfTbVucWDE', '1grL_7KMiGpzAJU4jP6dBLq-9RzfyD70l'];
+// let driveArr = ['1iSDrOQH7IG8OFczKrVX19IyAlO5HNDfX', '135T3wOSF_o6VMamNfmrgt9kfTbVucWDE', '1grL_7KMiGpzAJU4jP6dBLq-9RzfyD70l'];
 
+let driveArr = [1, 2, 3];
 //function to conditionally render bandcamp iframes only if there are items in the bandcampArr
 function bandcampRender(){
   if(bandcampArr.length > 0){
