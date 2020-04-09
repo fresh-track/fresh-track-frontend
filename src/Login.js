@@ -55,7 +55,9 @@ export default class Login extends Component {
             const signIn = await request.post(`${process.env.REACT_APP_DB_AUTH_URL}/login`, {
                 email: this.state.emailSignIn,
                 password: this.state.passwordSignIn,
-            })
+            }).withCredentials();
+            console.log(signIn.headers);
+            console.log(signIn.header);
             localStorage.setItem('user', JSON.stringify(signIn.body));
             this.props.setUser(signIn);
             this.props.history.push('/');
@@ -72,7 +74,7 @@ export default class Login extends Component {
                 username: this.state.usernameSignUp,
                 email: this.state.emailSignUp,
                 password: this.state.passwordSignUp,
-            })
+            }).withCredentials();
             localStorage.setItem('user', JSON.stringify(signUp.body));
             this.props.setUser(signUp);
             this.props.history.push('/');
