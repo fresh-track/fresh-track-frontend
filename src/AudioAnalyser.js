@@ -9,7 +9,7 @@ class AudioAnalyser extends Component {
   }
   
   componentDidMount() {
-    console.log(this.props.audio)
+    // console.log(this.props.audio)
     this.audioContext = new (window.AudioContext ||
       window.webkitAudioContext)();
     this.analyser = this.audioContext.createAnalyser();
