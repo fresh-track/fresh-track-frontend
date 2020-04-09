@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import request from 'superagent';
+import './Profile.css'
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
 
 export default class Profile extends Component {
   state = {
-    userId: '',
+    user: '',
     soundcloudUsername: '',
     bandcampUsername: '',
+    driveFolder: '',
+    dropboxFolder: '',
 }
 
 handleUpdate = async () => {
@@ -19,9 +25,8 @@ handleUpdate = async () => {
 }
 
 handleAddDrive = async () => {
-  const updateProfile = await request.post(`${process.env.REACT_APP_DB_URL}/drive`)
-  localStorage.setItem('user', JSON.stringify(updateProfile.body));
-  this.props.history.push('/');
+  const addDrive = await request.get(`${process.env.REACT_APP_DB_URL}/api/v1/drive/add?driveFolder=${this.state.driveFolder}`).withCredentials();
+  window.open(addDrive.text)
 }
 
 handleAddDropbox = async () => {
@@ -32,19 +37,20 @@ handleAddDropbox = async () => {
 
   render() {
     return (
-      <div>
-        <div className = "update">
-          <input className = "soundcloudUsername" input type ="text" placeholder="Soundcloud Username" value={ this.state.soundcloudUsername} onChange={(e) => this.setState({ soundcloudUsername: e.target.value})} />
-
-          <input className = "bandcampUsername" input type ="text" placeholder="Bandcamp Username" value={ this.state.bandcampUsername} onChange={(e) => this.setState({ bandcampUsername: e.target.value})} />
-
-          <button className = "button" onClick={ this.handleUpdate }>update</button>  
-
-          <button className = "button" onClick={ this.handleUpdate }>Add Google Drive Folder</button> 
-
-          <button className = "button" onClick={ this.handleUpdate }>Add Dropbox Folder</button> 
-        
-          </div>
+      <div className="profilediv">
+        <div className="updatediv">
+          <TextField id="standard-basic" label="Soundcloud Username" type="text" value={this.state.soundcloudUsername} onChange={(e) => this.setState({ soundcloudUsername: e.target.value })} />
+          <TextField id="standard-basic" label="Bandcamp Username" type="text" value={this.state.bandcampUsername} onChange={(e) => this.setState({ bandcampUsername: e.target.value })} />
+          <Button variant="contained" color="primary" size="small" className="button" onClick={this.handleUpdate}>Update Profile</Button>
+        </div>
+        <div className="updatediv">
+          <TextField id="standard-basic" label="Google Drive Folder" type="text"  value={this.state.driveFolder} onChange={(e) => this.setState({ driveFolder: e.target.value })} />
+          <Button variant="contained" color="primary" size="small" className="button" onClick={this.handleAddDrive}>Add</Button>
+        </div>
+        <div className="updatediv">
+          <TextField id="standard-basic" label="Dropbox Folder" type="text"  value={this.state.dropboxFolder} onChange={(e) => this.setState({ dropboxFolder: e.target.value })} />
+          <Button variant="contained" color="primary" size="small" className="button" onClick={this.handleAddDropbox}>Add</Button>
+        </div>
       </div>
     )
   }
