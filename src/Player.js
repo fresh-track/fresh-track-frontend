@@ -16,6 +16,29 @@ function bandcampRender(){
   }
 };
 
+// const audioList1 = [
+//   // {
+//   //   name: 'push',
+//   //   singer: 'budge',
+//   //   cover: 'https://emby.media/community/uploads/inline/355992/5c1cc71abf1ee_genericcoverart.jpg',
+//   //   musicSrc: () => {
+//   //     return Promise.resolve(
+//   //       'https://drive.google.com/u/0/uc?id=1iSDrOQH7IG8OFczKrVX19IyAlO5HNDfX&export=download'
+//   //     )
+//   //   },
+//   // },
+//   {
+//     name: 'Despacito',
+//     singer: 'Luis Fonsi',
+    
+//     musicSrc: () => {
+//       return Promise.resolve(
+//         'http://res.cloudinary.com/alick/video/upload/v1502689683/Luis_Fonsi_-_Despacito_ft._Daddy_Yankee_uyvqw9.mp3'
+//       )
+//     },
+//   },
+// ]
+
 const audioList1 = [
   // {
   //   name: 'push',
@@ -32,12 +55,26 @@ const audioList1 = [
     singer: 'Luis Fonsi',
     
     musicSrc: () => {
-      return Promise.resolve(
-        'http://res.cloudinary.com/alick/video/upload/v1502689683/Luis_Fonsi_-_Despacito_ft._Daddy_Yankee_uyvqw9.mp3'
-      )
-    },
+      return fetch('https://cors-anywhere.herokuapp.com/https://drive.google.com/u/0/uc?id=1iSDrOQH7IG8OFczKrVX19IyAlO5HNDfX&export=download', {
+        headers: {
+          origin: null
+        }
+      })
+        .then(res => res.blob())
+        .then(blob => URL.createObjectURL(blob));
+    }
   },
 ]
+
+// musicSrc: () => {
+//   return fetch('https://cors-anywhere.herokuapp.com/https://drive.google.com/u/0/uc?id=1iSDrOQH7IG8OFczKrVX19IyAlO5HNDfX&export=download', {
+//     headers: {
+//       origin: null
+//     }
+//   })
+//     .then(res => res.blob())
+//     .then(blob => URL.createObjectURL(blob));
+// }
 
 const options = {
   audioLists: audioList1,
@@ -87,6 +124,7 @@ export default class Player extends React.Component {
     return (
       <div className="player">
         {/* {this.state.audio && <AudioAnalyser audio={this.state.audio} />} */}
+        <AudioAnalyser />
         <ReactJkMusicPlayer customDownloader={customDownloader} {...options} />
         { bandcampRender() }
       </div>
