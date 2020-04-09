@@ -15,7 +15,8 @@ class AudioAnalyser extends Component {
     this.analyser = this.audioContext.createAnalyser();
     this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
     this.source = this.audioContext.createMediaElementSource(this.props.audio);
-    this.source.connect(this.analyser);
+    this.source.connect(this.analyser).connect(this.audioContext.destination);
+    // this.source.connect(this.analyser);
     this.rafId = requestAnimationFrame(this.tick);
   }
 
