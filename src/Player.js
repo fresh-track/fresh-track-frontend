@@ -53,11 +53,14 @@ const audioList1 = [
   {
     name: 'Despacito',
     singer: 'Luis Fonsi',
-    
     musicSrc: () => {
-      return Promise.resolve(
-        'http://res.cloudinary.com/alick/video/upload/v1502689683/Luis_Fonsi_-_Despacito_ft._Daddy_Yankee_uyvqw9.mp3'
-      )
+      return fetch(`https://cors-anywhere.herokuapp.com/http://res.cloudinary.com/alick/video/upload/v1502689683/Luis_Fonsi_-_Despacito_ft._Daddy_Yankee_uyvqw9.mp3`, {
+        headers: {
+          origin: null
+        }
+      })
+        .then(res => res.blob())
+        .then(blob => URL.createObjectURL(blob));
     },
   },
 ]
