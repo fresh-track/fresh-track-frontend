@@ -20,6 +20,10 @@
   margin-bottom: 80px;
 }
 
-.drawer {
-  overflow: scroll;
+.bandcamp-button {
+  height: 24px;
+  width: 75px;
+  margin-left: 20px;
+  color: black;
+  line-height: 24px
 }
