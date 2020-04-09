@@ -10,12 +10,12 @@ a:link {
 
 /* visited link */
 a:visited {
-  color: green;
+  color: rgb(32, 87, 87);
 }
 
 /* mouse over link */
 a:hover {
-  color: hotpink;
+  color: rgb(83, 175, 211);
 }
 
 /* selected link */
@@ -23,8 +23,18 @@ a:active {
   color: blue;
 }
 
+.main-title {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-size: 1.75rem;
+  color: rgb(32, 87, 87);
+  margin-bottom: 1.0rem;
+}
+
 .navBar {
   display: flex;
+  justify-content: center;
   flex-direction: row;
-
+  font-size: 1.00rem;
 }
