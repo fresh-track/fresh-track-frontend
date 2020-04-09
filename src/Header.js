@@ -9,7 +9,7 @@ export default class Header extends Component {
   // }
 
   logOutButton = () => {
-    if (this.props.user) return <div className="login-div"><Link onClick={e => this.handleLogOut()}>/logout/</Link></div>;
+    if (this.props.user) return <div className="login-div"><p onClick={e => this.handleLogOut()}>/logout/</p></div>;
   }
 
   handleLogOut = () => {

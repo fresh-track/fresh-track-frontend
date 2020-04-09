@@ -43,7 +43,7 @@ export default class Login extends Component {
             </div>
         } else {
             return <div className="signlogdiv">
-                <TextField id="standard-basic" label="Email" className="signInEmail" input type="email" value={this.state.emailSignIn} onChange={(e) => this.setState({ emailSignIn: e.target.value })} />
+                <TextField id="standard-basic" label="Email" className="signInEmail" type="email" value={this.state.emailSignIn} onChange={(e) => this.setState({ emailSignIn: e.target.value })} />
                 <TextField id="standard-password-input" label="Password" type="password" autoComplete="current-password" value={this.state.passwordSignIn} onChange={(e) => this.setState({ passwordSignIn: e.target.value })} />
                 <Button variant="contained" color="primary" size="small" className="button" onClick={this.handleSignIn}>Login</Button>
             </div>
