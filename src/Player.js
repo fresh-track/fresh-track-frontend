@@ -129,15 +129,18 @@ export default class Player extends React.Component {
 
   render () {
     return (
+      <div>
+        <button onClick={this.onSwitch} className='bandcamp-button'>
+            {!this.state.open ? 'bandcamp' : 'close'}
+          </button>
       <div className="player">
+        <div className='visualizer'>
         {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
+        </div>
         { this.state.drivePlayer }
-        { bandcampRender() }
+      <div style={{display: this.state.open ? 'block' : 'none'}}>{ bandcampRender() }</div>
+      </div>
       </div>
     )
   }
 }
-
-// 'https://drive.google.com/u/0/uc?id=11XJo0wqvvusgml3bNxUK3TwpQkhzriDV&export=download'
-// https://www.dropbox.com/s/ru4za6l9u1s93mh/DF%20Kick.wav?dl=1
-//test
