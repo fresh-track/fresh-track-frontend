@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 h1 {
-    font-size: 70px;
+    font-size: 2.5rem;
     font-family: 'Roboto', san-serif;
     letter-spacing: .6em;
     text-align: center;
@@ -10,17 +10,17 @@ h1 {
 }
 
 h2 {
-    font-size: 45px;
+    font-size: 2.0rem;
     font-family: 'Roboto', san-serif;
     text-align: center;
     margin-bottom: 10px;
     margin-right: 20px;
 }
 p {
-    font-size: 45px;
+    font-size: 1.0rem;
     font-family: 'Roboto', sans-serif;
     opacity: .8;
-    line-height: 1.75em;
+    line-height: 1.5em;
     text-align: center;
     margin-top: 80px;
     margin-left: 15%;
@@ -64,10 +64,9 @@ a.social:hover {
 }
 .photo img {
     display: inline;
-    height: 400px;
-    width: 400px;
-    box-shadow: 0 4px 26px #26c4af;
-    /* border-radius: 75%; */
+    height: 18rem;
+    width: 18rem;
+    box-shadow: 0 4px 26px  rgb(83, 175, 211);
     margin: 0 1rem;
     margin-top: 25px;
 }
