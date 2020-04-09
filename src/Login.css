@@ -1,0 +1,32 @@
+body {
+  color: white;
+  font-size: small;
+}
+
+.signInSignUp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  width: 50%;
+  padding-top: 20px;
+}
+
+.signlogdiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #a5a2a2;
+  border-radius: 10px;
+  background-color:	#e5e5e5;
+  padding-top: 5%;
+  padding-bottom: 2%;
+  margin: 30px;
+  width: 50%;
+  color: black;
+}
+
+.signlogdiv button {
+  margin: 20px
+}
