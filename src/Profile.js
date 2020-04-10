@@ -11,15 +11,14 @@ export default class Profile extends Component {
     soundcloudUsername: '',
     bandcampUsername: '',
     driveFolder: '',
-    dropboxFolder: '',
+    friend: '',
 }
 
 handleUpdate = async () => {
-  const updateProfile = await request.patch(`${process.env.REACT_APP_DB_AUTH_URL}/update/:id`, {
-      id: this.state.userId,
-      soundcloudProfile: this.state.soundcloudUsername,
-      bandcampProfile: this.state.bandcampUsername,
-  })
+  const updateProfile = await request.patch(`${process.env.REACT_APP_DB_URL}/api/v1/user/${this.state.user._id}`, {
+      soundcloudUsername: this.state.soundcloudUsername,
+      bandcampUsername: this.state.bandcampUsername,
+  }).withCredentials();
   localStorage.setItem('user', JSON.stringify(updateProfile.body));
   this.props.history.push('/');
 }
@@ -29,10 +28,15 @@ handleAddDrive = async () => {
   window.open(addDrive.text)
 }
 
-handleAddDropbox = async () => {
-  const updateProfile = await request.post(`${process.env.REACT_APP_DB_URL}/dropbox`)
+handleAddFriend = async () => {
+  const updateProfile = await request.put(`${process.env.REACT_APP_DB_URL}/api/v1/user/${this.state.friend}`).withCredentials();
   localStorage.setItem('user', JSON.stringify(updateProfile.body));
   this.props.history.push('/');
+}
+
+componentDidMount() {
+  console.log(this.props.user)
+  this.setState({ user: this.props.user })
 }
 
   render() {
@@ -48,8 +52,8 @@ handleAddDropbox = async () => {
           <Button variant="contained" color="primary" size="small" className="button" onClick={this.handleAddDrive}>Add</Button>
         </div>
         <div className="updatediv">
-          <TextField id="standard-basic" label="Dropbox Folder" type="text"  value={this.state.dropboxFolder} onChange={(e) => this.setState({ dropboxFolder: e.target.value })} />
-          <Button variant="contained" color="primary" size="small" className="button" onClick={this.handleAddDropbox}>Add</Button>
+          <TextField id="standard-basic" label="Add Friend" type="text"  value={this.state.friend} onChange={(e) => this.setState({ friend: e.target.value })} />
+          <Button variant="contained" color="primary" size="small" className="button" onClick={this.handleAddFriend}>Add</Button>
         </div>
       </div>
     )
