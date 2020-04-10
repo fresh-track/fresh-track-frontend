@@ -86,7 +86,31 @@ export default class Player extends React.Component {
     const audio = document.querySelector('audio')
     // console.log(audio)
     this.setState({audio})
+    document.addEventListener("mousedown", this.handleClickOutside);
   }
+
+  container = React.createRef();
+  state = {
+    friendOpen: false,
+  };
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+  }
+  handleClickOutside = event => {
+    if (this.container.current && !this.container.current.contains(event.target)) {
+      this.setState({
+        friendOpen: false,
+      });
+    }
+  };
+  handleButtonClick = () => {
+    this.setState(state => {
+      return {
+        friendOpen: !state.friendOpen,
+      };
+    });
+  };
 
   render () {
     const customDownloader = (downloadInfo) => {
@@ -99,6 +123,21 @@ export default class Player extends React.Component {
    
     return (
       <div className="player">
+        <div className="container" ref={this.container}>
+          <button type="button" class="button" onClick={this.handleButtonClick}>
+            ☰
+          </button>
+          {this.state.friendOpen && (
+            <div class="container">
+              <ul>
+                <li>Homie 1</li>
+                <li>Homie 2</li>
+                <li>Homie 3</li>
+                <li>Homie 4</li>
+              </ul>
+            </div>
+          )}
+        </div>
         <div className='visualizer'>
         {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
         </div>
