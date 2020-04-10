@@ -3,7 +3,6 @@ import ReactJkMusicPlayer from "react-jinke-music-player";
 import "react-jinke-music-player/assets/index.css";
 import AudioAnalyser from './AudioAnalyser';
 import './Player.css';
-import request from 'superagent';
 
 // http://fresh-track-staging.herokuapp.com/api/v1/drive/all
 
@@ -21,76 +20,12 @@ function bandcampRender(){
   }
 };
 
-const grabDrive = async () => {
-  const driveGet = await request.get(`${process.env.REACT_APP_DB_URL}/api/v1/drive/all`);
-  const driveToObject = (JSON.parse(driveGet.text));
-  return driveToObject[0];
-}
-
-function driveRender(drive){
-  const driveArr = drive.audioFiles;
-  if(driveArr.length > 0){
-    return driveArr.map((value, index) => {
-      return {
-        name: `${value.name}`,
-        singer: `${drive._id}`,
-        cover: 'https://emby.media/community/uploads/inline/355992/5c1cc71abf1ee_genericcoverart.jpg',
-        musicSrc: () => {
-          return fetch(`https://alchemy-anywhere.herokuapp.com/${value.url}`, {
-            headers: {
-              origin: null
-            }
-          })
-            .then(res => res.blob())
-            .then(blob => URL.createObjectURL(blob));
-        },
-    }})
-  }
-};
-
-
-
-
-
-
-
-// console.log(audioList1);
-// const audioList1 = () => { 
-//   return driveRender();
-// };
-
-// const audioList1 = [
-//   // {
-//   //   name: 'push',
-//   //   singer: 'budge',
-//   //   cover: 'https://emby.media/community/uploads/inline/355992/5c1cc71abf1ee_genericcoverart.jpg',
-//   //   musicSrc: () => {
-//   //     return Promise.resolve(
-//   //       'https://drive.google.com/u/0/uc?id=1iSDrOQH7IG8OFczKrVX19IyAlO5HNDfX&export=download'
-//   //     )
-//   //   },
-//   // },
-//   {
-//     name: 'Despacito',
-//     singer: 'Luis Fonsi',
-//     musicSrc: () => {
-//       return fetch(`https://cors-anywhere.herokuapp.com/http://res.cloudinary.com/alick/video/upload/v1502689683/Luis_Fonsi_-_Despacito_ft._Daddy_Yankee_uyvqw9.mp3`, {
-//         headers: {
-//           origin: null
-//         }
-//       })
-//         .then(res => res.blob())
-//         .then(blob => URL.createObjectURL(blob));
-//     },
-//   },
-// ]
-
-
-
 export default class Player extends React.Component {
   //bandcamp display state
   state = {
     open: false,
+    friendOpen: false,
+    audio: null
   }
 
   onSwitch = () => {
@@ -99,25 +34,37 @@ export default class Player extends React.Component {
     });
   }
 
-  constructor(props){
-    super(props)
-    this.state = {
-      audio: null
-    }
-  }
   componentDidMount() {
-    this.returnPlayer();
+    // this.returnPlayer();
     const audio = document.querySelector('audio')
+    console.log(audio)
     this.setState({audio})
+    document.addEventListener("mousedown", this.handleClickOutside);
   }
+  
+  container = React.createRef();
 
-  async returnPlayer() {
-    const drive = await grabDrive();
-    console.log('1', drive)
-    const audioList1 = await driveRender(drive);
-    console.log('2', audioList1);
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+  }
+  handleClickOutside = event => {
+    if (this.container.current && !this.container.current.contains(event.target)) {
+      this.setState({
+        friendOpen: false,
+      });
+    }
+  };
+  handleButtonClick = () => {
+    this.setState(state => {
+      return {
+        friendOpen: !state.friendOpen,
+      };
+    });
+  };
+
+  render () {
     const options = {
-      audioLists: audioList1,
+      audioLists: this.props.audioList,
       autoPlay: false,
       remember: false,
       mode: 'full',
@@ -125,7 +72,7 @@ export default class Player extends React.Component {
       autoHiddenCover: true,
       spaceBar: true,
     }
-    console.log('3', options);
+
     const customDownloader = (downloadInfo) => {
       const link = document.createElement('a')
       link.href = downloadInfo.src // a.mp3
@@ -133,23 +80,34 @@ export default class Player extends React.Component {
       document.body.appendChild(link)
       link.click()
     }
-    console.log('4', customDownloader);
-    this.setState({ drivePlayer: <ReactJkMusicPlayer customDownloader={customDownloader} {...options} /> });
-    console.log('5', this.state.drivePlayer);
-  }
-
-  render () {
+    console.log(this.state)
     return (
       <div>
         <button onClick={this.onSwitch} className='bandcamp-button'>
             {!this.state.open ? 'bandcamp' : 'close'}
           </button>
-      <div className="player">
-
-        {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
-
-        { this.state.drivePlayer }
+      
+      <div className="container" ref={this.container}>
+          <button type="button" className="button" onClick={this.handleButtonClick}>
+            ☰
+          </button>
+          {this.state.friendOpen && (
+            <div className="container">
+              <ul>
+                <li>Homie 1</li>
+                <li>Homie 2</li>
+                <li>Homie 3</li>
+                <li>Homie 4</li>
+              </ul>
+            </div>
+          )}
+        </div>
+        <div className="player">
+      <div className='visualizer'>
+      {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
+      </div>
       <div style={{display: this.state.open ? 'block' : 'none'}}>{ bandcampRender() }</div>
+        <ReactJkMusicPlayer customDownloader={customDownloader} {...options} />
       </div>
       </div>
     )
