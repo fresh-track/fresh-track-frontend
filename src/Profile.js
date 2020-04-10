@@ -49,7 +49,7 @@ handleAddFriend = async () => {
   try {
     const updateProfile = await request.put(`${process.env.REACT_APP_DB_URL}/api/v1/user/${this.state.friend}`).withCredentials();
     localStorage.setItem('user', JSON.stringify(updateProfile.body));
-    this.props.history.push('/');
+    this.props.history.push('/player');
   } catch (err) {
     this.setState({ open: true })
   }
