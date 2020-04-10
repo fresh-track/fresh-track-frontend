@@ -92,3 +92,8 @@ a.social:hover {
     text-align: center;
     margin-top: 20px;
 }
+
+.corpo-logo {
+  height: 20rem;
+  width: 20rem;
+}

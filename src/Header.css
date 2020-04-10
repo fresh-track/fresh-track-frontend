@@ -1,6 +1,6 @@
 body {
   color: white;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(240, 240, 240);
   /* text-shadow: 2px 2px 8px rgb(97, 223, 232); */
   /* unvisited link */
 }
@@ -36,7 +36,7 @@ a:active {
   flex-wrap: wrap;
   justify-content: space-between;
   min-height: 4rem;
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(255, 255, 255);
 }
 
 .main-title {
