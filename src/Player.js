@@ -88,6 +88,17 @@ function driveRender(drive){
 
 
 export default class Player extends React.Component {
+  //bandcamp display state
+  state = {
+    open: false,
+  }
+
+  onSwitch = () => {
+    this.setState({
+      open: !this.state.open,
+    });
+  }
+
   constructor(props){
     super(props)
     this.state = {
@@ -129,10 +140,17 @@ export default class Player extends React.Component {
 
   render () {
     return (
+      <div>
+        <button onClick={this.onSwitch} className='bandcamp-button'>
+            {!this.state.open ? 'bandcamp' : 'close'}
+          </button>
       <div className="player">
+
         {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
+
         { this.state.drivePlayer }
-        { bandcampRender() }
+      <div style={{display: this.state.open ? 'block' : 'none'}}>{ bandcampRender() }</div>
+      </div>
       </div>
     )
   }
