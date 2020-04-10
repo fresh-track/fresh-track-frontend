@@ -3,7 +3,8 @@ import ReactJkMusicPlayer from "react-jinke-music-player";
 import "react-jinke-music-player/assets/index.css";
 import AudioAnalyser from './AudioAnalyser';
 import './Player.css';
-
+import request from 'superagent';
+import { Link } from 'react-router-dom';
 // http://fresh-track-staging.herokuapp.com/api/v1/drive/all
 
 let bandcampArr = [1413157771, 4037375649, 2926175440, 4267872102, 2358433489, 3535544007];
@@ -19,12 +20,14 @@ function bandcampRender(){
   }
 };
 
+
 export default class Player extends React.Component {
   //bandcamp display state
   state = {
     open: false,
     friendOpen: false,
-    audio: null
+    audio: null,
+    friends: []
   }
 
   onSwitch = () => {
@@ -33,10 +36,12 @@ export default class Player extends React.Component {
     });
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // this.returnPlayer();
+    const getFriends = await request.get(`${process.env.REACT_APP_DB_URL}/api/v1/user/${this.props.user._id}`).withCredentials()
     const audio = document.querySelector('audio')
-    console.log(audio)
+    this.setState({friends: getFriends.body.followedUsers})
+    console.log(this.state.friends)
     this.setState({audio})
     document.addEventListener("mousedown", this.handleClickOutside);
   }
@@ -61,7 +66,21 @@ export default class Player extends React.Component {
     });
   };
 
+  // handleRefresh = (friendId) => {
+  //   window.location.href = `/${friendId}`
+  // };
+
+  // refreshPage(friendId) {
+  //   window.location.href = `/${friendId}`
+  //   // window.location.reload(false);
+  // }
+  refreshPage(friendId) {
+    window.location.href = `/player/${friendId}`
+    // window.location.reload(false);
+  }
+
   render () {
+    const friendNodes = this.state.friends.map (friend => <Link onClick={e => this.refreshPage(friend.friendId)} key ={friend._id} to={`/${friend.friend}`}><li key={friend._id}>{friend.friend}</li></Link>);
     const options = {
       audioLists: this.props.audioList,
       autoPlay: false,
@@ -75,17 +94,15 @@ export default class Player extends React.Component {
 
     const customDownloader = (downloadInfo) => {
       const link = document.createElement('a')
-      link.href = downloadInfo.src // a.mp3
+      link.href = downloadInfo.src
       link.download = downloadInfo.filename || 'test'
       document.body.appendChild(link)
       link.click()
     }
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div>
-        <button onClick={this.onSwitch} className='bandcamp-button'>
-            {!this.state.open ? 'bandcamp' : 'close'}
-          </button>
+        
       
       <div className="container" ref={this.container}>
           <button type="button" className="button" onClick={this.handleButtonClick}>
@@ -94,19 +111,20 @@ export default class Player extends React.Component {
           {this.state.friendOpen && (
             <div className="container">
               <ul>
-                <li>Homie 1</li>
-                <li>Homie 2</li>
-                <li>Homie 3</li>
-                <li>Homie 4</li>
+                <li key="username" onClick={e => this.refreshPage('')}>{this.props.user.username}</li>
+                {friendNodes}
               </ul>
             </div>
           )}
         </div>
+        <button onClick={this.onSwitch} className='bandcamp-button'>
+            {!this.state.open ? 'bandcamp' : 'close'}
+          </button>
         <div className="player">
       <div className='visualizer'>
       {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
       </div>
-      <div style={{display: this.state.open ? 'block' : 'none'}}>{ bandcampRender() }</div>
+      <div className = 'bandcamp-bottom' style={{display: this.state.open ? 'block' : 'none'}}>{ bandcampRender() }</div>
         <ReactJkMusicPlayer customDownloader={customDownloader} {...options} />
       </div>
       </div>

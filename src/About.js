@@ -8,10 +8,10 @@ export default class About extends Component {
     return (
       <div className="about-container">
         
-        <h1> the fresh-track trio </h1>
+        <h1>fresh-track trio</h1>
         
         <p> 
-        The fresh-track team is brought to you by a Portland, Or dev trio dedicated to bringing music lovers a new kind of music sharing experience. Fresh-track is a unique file repository that allows artists to upload, share, and collaborate on their unreleased music tracks from their Soundcloud, Bandcamp, Google Drive and Drop Box music libraries.
+        fresh-track is brought to you by a group of Portland, Oregon based developers dedicated to bringing musicians and music lovers a new kind of music sharing experience. fresh-track is a unique file repository that allows artists to listen to, share, and collaborate by collecting their unreleased and released music from their Soundcloud, Bandcamp, Google Drive and Dropbox music libraries all into one place.
         </p>
        
         <div className="team-container">
@@ -19,21 +19,22 @@ export default class About extends Component {
           <div className="photo">
             <h2>chris ficht</h2>
                 <img src='Chris_Ficht.jpg' alt="Chris" />
-                  <div className="socialicons">
-                    <a href="https://www.linkedin.com/in/chrisficht/" className="Linkedin social" >
+                  <div className="social-icons">
+                    <a href="https://www.linkedin.com/in/chrisficht/" className="Linkedin social" target="_blank" rel="noopener noreferrer" >
                        <FontAwesomeIcon icon={faLinkedin} size="2x" /> </a>
-                    <a href="https://github.com/cficht" className="GitHub social" >
+                    <a href="https://github.com/cficht" className="GitHub social" target="_blank" rel="noopener noreferrer" >
                        <FontAwesomeIcon icon={faGithub} size="2x" /></a>
                 </div>
             </div>            
+            
 
           <div className="photo">
               <h2>mikey romay</h2>
                 <img src='Mikey_Romay.jpg' alt="Mikey Romay" />
-                  <div className="socialicons">
-                    <a href="https://www.linkedin.com/in/michaelromay/" className="Linkedin social" >
+                  <div className="social-icons">
+                    <a href="https://www.linkedin.com/in/michaelromay/" className="Linkedin social" target="_blank" rel="noopener noreferrer" >
                       <FontAwesomeIcon icon={faLinkedin} size="2x" /></a>
-                    <a href="https://github.com/mikeymasonic" className="GitHub social">
+                    <a href="https://github.com/mikeymasonic" className="GitHub social" target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon icon={faGithub} size="2x" /></a>
                 </div>
           </div>
@@ -41,10 +42,10 @@ export default class About extends Component {
           <div className="photo">
               <h2>will piro</h2>
                 <img src='Will_Piro.jpg' alt="Will" />
-                  <div className="socialicons">
-                    <a href="https://www.linkedin.com/in/willpiro/" className="Linkedin social">
+                  <div className="social-icons">
+                    <a href="https://www.linkedin.com/in/willpiro/" className="Linkedin social" target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon icon={faLinkedin} size="2x" /></a>
-                    <a href="https://github.com/shaka2pass" className="GitHub social">
+                    <a href="https://github.com/shaka2pass" className="GitHub social" target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon icon={faGithub} size="2x" /></a>
                     </div>
                   </div>

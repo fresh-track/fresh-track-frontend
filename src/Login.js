@@ -60,7 +60,7 @@ export default class Login extends Component {
             console.log(signIn.header);
             localStorage.setItem('user', JSON.stringify(signIn.body));
             this.props.setUser(signIn);
-            this.props.history.push('/');
+            this.props.history.push('/player');
 
         } catch (err) {
             this.setState({ responseError: err })
@@ -77,7 +77,7 @@ export default class Login extends Component {
             }).withCredentials();
             localStorage.setItem('user', JSON.stringify(signUp.body));
             this.props.setUser(signUp);
-            this.props.history.push('/');
+            this.props.history.push('/player');
         } catch (err) {
             this.setState({ responseError: err })
             this.setState({ open: true })
@@ -91,7 +91,7 @@ export default class Login extends Component {
     handleLogOut = () => {
         localStorage.clear();
         this.props.setUser({ body: null });
-        this.props.history.push('/');
+        this.props.history.push('/login');
     }
 
     render() {
