@@ -3,7 +3,12 @@ import request from 'superagent';
 import './Profile.css'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
+function Alert(props) {
+  return <MuiAlert elevation={10} variant="filled" {...props} />;
+}
 
 export default class Profile extends Component {
   state = {
@@ -12,7 +17,15 @@ export default class Profile extends Component {
     bandcampUsername: '',
     driveFolder: '',
     friend: '',
+    open: false
 }
+
+closeSB = (event, reason) => {
+  if (reason === 'clickaway') {
+      return;
+  }
+  this.setState({ open: false })
+};
 
 handleUpdate = async () => {
   const updateProfile = await request.patch(`${process.env.REACT_APP_DB_URL}/api/v1/user/${this.state.user._id}`, {
@@ -29,13 +42,16 @@ handleAddDrive = async () => {
 }
 
 handleAddFriend = async () => {
-  const updateProfile = await request.put(`${process.env.REACT_APP_DB_URL}/api/v1/user/${this.state.friend}`).withCredentials();
-  localStorage.setItem('user', JSON.stringify(updateProfile.body));
-  this.props.history.push('/');
+  try {
+    const updateProfile = await request.put(`${process.env.REACT_APP_DB_URL}/api/v1/user/${this.state.friend}`).withCredentials();
+    localStorage.setItem('user', JSON.stringify(updateProfile.body));
+    this.props.history.push('/');
+  } catch (err) {
+    this.setState({ open: true })
+  }
 }
 
 componentDidMount() {
-  console.log(this.props.user)
   this.setState({ user: this.props.user })
 }
 
@@ -55,6 +71,9 @@ componentDidMount() {
           <TextField id="standard-basic" label="Add Friend" type="text"  value={this.state.friend} onChange={(e) => this.setState({ friend: e.target.value })} />
           <Button variant="contained" color="primary" size="small" className="button" onClick={this.handleAddFriend}>Add</Button>
         </div>
+        <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.closeSB}>
+                    <Alert onClose={this.closeSB} severity="warning">User does not exist</Alert>
+                </Snackbar>
       </div>
     )
   }
