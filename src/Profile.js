@@ -25,7 +25,7 @@ handleUpdate = async () => {
 
 handleAddDrive = async () => {
   const addDrive = await request.get(`${process.env.REACT_APP_DB_URL}/api/v1/drive/add?driveFolder=${this.state.driveFolder}`).withCredentials();
-  window.open(addDrive.text)
+  window.location.href = `${addDrive.text}`;
 }
 
 handleAddFriend = async () => {
