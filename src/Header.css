@@ -1,6 +1,6 @@
 body {
   color: white;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(240, 240, 240);
   /* text-shadow: 2px 2px 8px rgb(97, 223, 232); */
   /* unvisited link */
 }
@@ -36,7 +36,7 @@ a:active {
   flex-wrap: wrap;
   justify-content: space-between;
   min-height: 4rem;
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(255, 255, 255);
 }
 
 .main-title {
@@ -46,7 +46,7 @@ a:active {
   font-size: 1.75rem;
   color: rgb(32, 87, 87);
   margin-bottom: .2rem;
-  margin-left: 1.5rem;
+  margin-left: 3.5rem;
 }
 
 .navBar {
@@ -69,6 +69,6 @@ a:active {
 
 .login-div {
   padding-left: 15px;
-  margin-right: 1.5rem;
+  margin-right: 3.5rem;
   font-size: .9rem;
 }
