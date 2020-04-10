@@ -22,7 +22,8 @@ export default class Header extends Component {
   render() {
     return (
       <div className="mainHeader">
-      <div className="main-title">fresh-track</div>
+      <div className="main-title">fresh-track
+      <img className="corp-logo" src='fresh-track-logo.png' alt="corp-logo" height="40rem" width="50rem" /></div>
       <div className="navBar">
         <div className="link"><Link to='/'> player </Link></div> <></>
         <div className="link"><Link to='/profile'> profile </Link></div> <></>
