@@ -28,7 +28,7 @@ export default class Header extends Component {
         <div className="link"><Link to='/profile'> profile </Link></div> <></>
         <div className="link"><Link to='/about'> about </Link></div> <></>
         <a href="https://github.com/fresh-track" className="teamGitHubLink" >github
-        <FontAwesomeIcon icon={faGithub} size="1.75x" /></a> 
+        <FontAwesomeIcon icon={faGithub} size="1x" /></a> 
         <div>{this.logOutButton()}</div>
       </div>
       </div>
