@@ -76,7 +76,7 @@ export default class Login extends Component {
             }).withCredentials();
             localStorage.setItem('user', JSON.stringify(signUp.body));
             this.props.setUser(signUp);
-            this.props.history.push('/player');
+            this.props.history.push('/profile');
         } catch (err) {
             this.setState({ responseError: err })
             this.setState({ open: true })
