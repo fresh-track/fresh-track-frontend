@@ -21,7 +21,6 @@ function bandcampRender(){
 };
 
 
-
 export default class Player extends React.Component {
   //bandcamp display state
   state = {
@@ -40,12 +39,12 @@ export default class Player extends React.Component {
    userBandcamp(username) {
     console.log(username)
     if(username === 'whatever2') {
-      return <button onClick={this.onSwitch} className='bandcamp-button'>
-      {!this.state.open ? 'bandcamp' : 'close'}
-    </button>
+      return <input onClick={this.onSwitch} alt = "bandcamp image" id='bcimage' type="image" name="submit" value="submit" src="../bc.png" />
+      // {!this.state.open ? '' : ''}
+    // </button>
     }
   }
-  
+  // return <button onClick={this.onSwitch} className='bandcamp-button' style={{display: 'block', background: 'url(../bc.png)'}}>
 
   async componentDidMount() {
     // this.returnPlayer();
