@@ -25,6 +25,7 @@ export default class Header extends Component {
       <div className="main-title"><Link to='/player'> fresh-track </Link>
       <Link to='/player'><img className="corp-logo" src='../fresh-track-logo.png' alt="corp-logo" height="40rem" width="50rem" /></Link></div>
       <div className="navBar">
+        <div className="link"><Link to='/'> home </Link></div> <></>
         <div className="link"><Link to='/player'> player </Link></div> <></>
         <div className="link"><Link to='/profile'> profile </Link></div> <></>
         <div className="link"><Link to='/about'> about </Link></div> <></>
