@@ -36,21 +36,25 @@ export default class Login extends Component {
     signUpOrLogin = () => {
         if (!this.state.logged) {
             return <div className="signlogdiv">
+                <form onSubmit={this.handleSignUp}>
                 <TextField id="standard-basic" label="Username" className="signUpUsername" type="username" value={this.state.usernameSignUp} onChange={(e) => this.setState({ usernameSignUp: e.target.value })} />
                 <TextField id="standard-basic" label="Email" className="signUpEmail" type="email" value={this.state.emailSignUp} onChange={(e) => this.setState({ emailSignUp: e.target.value })} />
                 <TextField id="standard-password-input" label="Password" type="password" autoComplete="current-password" value={this.state.passwordSignUp} onChange={(e) => this.setState({ passwordSignUp: e.target.value })} />
-                <Button id="signupButton" variant="contained" color="primary" size="small" className="button" onClick={this.handleSignUp}>Sign up</Button>
+                <Button id="signupButton" variant="contained" color="primary" size="small" className="button" type="submit" onClick={this.handleSignUp}>Sign up</Button></form>
             </div>
         } else {
             return <div className="signlogdiv">
+                <form onSubmit={this.handleSignIn}>
                 <TextField id="standard-basic" label="Email" className="signInEmail" type="email" value={this.state.emailSignIn} onChange={(e) => this.setState({ emailSignIn: e.target.value })} />
                 <TextField id="standard-password-input" label="Password" type="password" autoComplete="current-password" value={this.state.passwordSignIn} onChange={(e) => this.setState({ passwordSignIn: e.target.value })} />
-                <Button id="loginButton" variant="contained" color="primary" size="small" className="button" onClick={this.handleSignIn}>Login</Button>
+                
+                <Button id="loginButton" variant="contained" color="primary" size="small" className="button" type="submit">Login</Button></form>
             </div>
         }
     }
 
-    handleSignIn = async () => {
+    handleSignIn = async (e) => {
+        e.preventDefault();
         try {
             const signIn = await request.post(`${process.env.REACT_APP_DB_AUTH_URL}/login`, {
                 email: this.state.emailSignIn,
@@ -68,7 +72,8 @@ export default class Login extends Component {
         }
     }
 
-    handleSignUp = async () => {
+    handleSignUp = async (e) => {
+        e.preventDefault();
         try {
             const signUp = await request.post(`${process.env.REACT_APP_DB_AUTH_URL}/signup`, {
                 username: this.state.usernameSignUp,
