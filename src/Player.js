@@ -70,13 +70,13 @@ export default class Player extends React.Component {
   //   window.location.href = `/${friendId}`
   // };
 
-  refreshPage(friendId) {
-    window.location.href = `/${friendId}`
-    // window.location.reload(false);
-  }
+  // refreshPage(friendId) {
+  //   window.location.href = `/${friendId}`
+  //   // window.location.reload(false);
+  // }
 
   render () {
-    const friendNodes = this.state.friends.map (friend => <Link onClick={e => this.refreshPage(friend.friendId)} to={`/${friend.friend}`}><li key={friend._id}>{friend.friend}</li></Link>);
+    // const friendNodes = this.state.friends.map (friend => <Link onClick={e => this.refreshPage(friend.friendId)} to={`/${friend.friend}`}><li key={friend._id}>{friend.friend}</li></Link>);
     const options = {
       audioLists: this.props.audioList,
       autoPlay: false,
@@ -108,7 +108,7 @@ export default class Player extends React.Component {
             <div className="container">
               <ul>
                 <li key="username" onClick={e => this.refreshPage('')}>{this.props.user.username}</li>
-                {friendNodes}
+                {/* {friendNodes} */}
               </ul>
             </div>
           )}
