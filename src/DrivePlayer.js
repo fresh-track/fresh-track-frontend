@@ -17,7 +17,7 @@ function driveRender(drive){
         singer: `${drive._id}`,
         cover: 'https://emby.media/community/uploads/inline/355992/5c1cc71abf1ee_genericcoverart.jpg',
         musicSrc: () => {
-          return fetch(`https://alchemy-anywhere.herokuapp.com/${value.url}`, {
+          return fetch(`https://fresh-track-anywhere.herokuapp.com/${value.url}`, {
             headers: {
               origin: null
             }
@@ -45,3 +45,8 @@ export default class DrivePlayer extends Component {
     )
   }
 }
+
+// https://alchemy-anywhere.herokuapp.com/
+// https://cors-anywhere.herokuapp.com/
+// https://fresh-track-anywhere.herokuapp.com/
+// https://fresh-track-anywhere-2.herokuapp.com/
