@@ -1,11 +1,12 @@
 // import React from 'react';
 import React from 'react';
-import Player from './Player';
+// import Player from './Player';
 import Login from './Login';
 import Header from './Header';
 import Profile from './Profile';
 import About from './About';
 import PrivateRoute from './PrivateRoute.js';
+
 // import Header from './Header.js';
 // import './App.css';
 import { 
@@ -13,6 +14,7 @@ import {
     Route,
     Switch
  } from 'react-router-dom';
+import DrivePlayer from './DrivePlayer';
 
 export default class App extends React.Component {
   state = { user: JSON.parse(localStorage.getItem('user')) };
@@ -27,7 +29,7 @@ export default class App extends React.Component {
         <BrowserRouter>
         <Header user={this.state.user} setUser={this.setUser}/>
             <Switch>
-            <PrivateRoute exact path="/" component={Player} user={this.state.user}/>
+            <PrivateRoute exact path="/" component={DrivePlayer} user={this.state.user}/>
             <Route exact path="/login" render={(props) => <Login {...props} setUser={this.setUser} user={this.state.user}/>}  />
             <Route exact path='/profile' component={Profile} />
             <Route exact path='/about' component={About} />
