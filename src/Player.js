@@ -80,7 +80,7 @@ export default class Player extends React.Component {
   }
 
   render () {
-    const friendNodes = this.state.friends.map (friend => <Link onClick={e => this.refreshPage(friend.friendId)} to={`/${friend.friend}`}><li key={friend._id}>{friend.friend}</li></Link>);
+    const friendNodes = this.state.friends.map (friend => <Link onClick={e => this.refreshPage(friend.friendId)} key ={friend._id} to={`/${friend.friend}`}><li key={friend._id}>{friend.friend}</li></Link>);
     const options = {
       audioLists: this.props.audioList,
       autoPlay: false,
