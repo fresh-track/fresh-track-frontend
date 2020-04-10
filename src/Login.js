@@ -55,7 +55,9 @@ export default class Login extends Component {
             const signIn = await request.post(`${process.env.REACT_APP_DB_AUTH_URL}/login`, {
                 email: this.state.emailSignIn,
                 password: this.state.passwordSignIn,
-            })
+            }).withCredentials();
+            console.log(signIn.headers);
+            console.log(signIn.header);
             localStorage.setItem('user', JSON.stringify(signIn.body));
             this.props.setUser(signIn);
             this.props.history.push('/');
@@ -72,7 +74,7 @@ export default class Login extends Component {
                 username: this.state.usernameSignUp,
                 email: this.state.emailSignUp,
                 password: this.state.passwordSignUp,
-            })
+            }).withCredentials();
             localStorage.setItem('user', JSON.stringify(signUp.body));
             this.props.setUser(signUp);
             this.props.history.push('/');
@@ -83,7 +85,7 @@ export default class Login extends Component {
     }
 
     logOutButton = () => {
-        if (this.props.user) return <div className="login-div"><Button variant="contained" color="secondary" size="small" className="button" onClick={e => this.handleLogOut()}>Logout</Button></div>;
+        if (this.props.user) return <div className="login-div"><Button variant="contained" color="secondary" size="small" id="logoutbutton" className="logoutButton" onClick={e => this.handleLogOut()}>Logout</Button></div>;
     }
 
     handleLogOut = () => {

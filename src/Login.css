@@ -47,6 +47,11 @@ body {
   background-color: rgb(32, 87, 87) ;
 }
 
+#logoutbutton {
+  color:rgb(255, 255, 255);
+  background-color: rgb(131, 25, 126) ;
+}
+
 #signupButton {
   color:rgb(255, 255, 255);
   background-color: rgb(32, 87, 87) ;
@@ -58,6 +63,11 @@ body {
 }
 
 .login-div {
-  color: rgb(32, 87, 87)
+  color: rgb(32, 87, 87);
+  cursor: pointer;
+}
+
+.login-div:hover {
+  color: rgb(83, 175, 211);
 }
 

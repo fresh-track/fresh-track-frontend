@@ -58,3 +58,11 @@ li:hover {
   background-color: rgba(0, 0, 0, 0.14);
   cursor: pointer;
 }
+
+.bandcamp-button {
+  height: 24px;
+  width: 75px;
+  margin-left: 20px;
+  color: black;
+  line-height: 24px
+}

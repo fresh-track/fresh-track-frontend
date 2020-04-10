@@ -1,26 +1,42 @@
 body {
   color: white;
-  background-color: black;
+  background-color: rgb(255, 255, 255);
   /* text-shadow: 2px 2px 8px rgb(97, 223, 232); */
   /* unvisited link */
 }
 a:link {
-  color: red;
+  color: rgb(32, 87, 87);
+  text-decoration: none;
 }
 
 /* visited link */
 a:visited {
   color: rgb(32, 87, 87);
+  text-decoration: none;
 }
 
 /* mouse over link */
 a:hover {
   color: rgb(83, 175, 211);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+  transition-delay: 0s;
 }
 
 /* selected link */
 a:active {
-  color: blue;
+  color: rgb(142, 142, 226);
+  text-decoration: none;
+}
+
+.mainHeader {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-height: 4rem;
+  background-color: rgb(240, 240, 240);
 }
 
 .main-title {
@@ -30,11 +46,29 @@ a:active {
   font-size: 1.75rem;
   color: rgb(32, 87, 87);
   margin-bottom: .2rem;
+  margin-left: 1.5rem;
 }
 
 .navBar {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: row;
   font-size: .80rem;
+}
+
+.link {
+  padding-left: 15px;
+  font-size: .9rem;
+}
+
+.teamGitHubLink {
+  padding-left: 15px;
+  padding-right: .5rem;
+  font-size: .9rem;
+}
+
+.login-div {
+  padding-left: 15px;
+  margin-right: 1.5rem;
+  font-size: .9rem;
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 // import Button from '@material-ui/core/Button';
 import './Header.css';
 
@@ -9,7 +11,7 @@ export default class Header extends Component {
   // }
 
   logOutButton = () => {
-    if (this.props.user) return <div className="login-div"><p onClick={e => this.handleLogOut()}>/logout/</p></div>;
+    if (this.props.user) return <div className="login-div" onClick={e => this.handleLogOut()}>logout</div>;
   }
 
   handleLogOut = () => {
@@ -19,13 +21,15 @@ export default class Header extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="mainHeader">
       <div className="main-title">fresh-track</div>
       <div className="navBar">
-        <Link to='/'>| player </Link> <></>
-        <Link to='/profile'>| profile |</Link> <></>
-        <Link to='/about'> about |</Link> <></>
-        {this.logOutButton()}
+        <div className="link"><Link to='/'> player </Link></div> <></>
+        <div className="link"><Link to='/profile'> profile </Link></div> <></>
+        <div className="link"><Link to='/about'> about </Link></div> <></>
+        <a href="https://github.com/fresh-track" className="teamGitHubLink" >github
+        <FontAwesomeIcon icon={faGithub} size="1.75x" /></a> 
+        <div>{this.logOutButton()}</div>
       </div>
       </div>
     )
