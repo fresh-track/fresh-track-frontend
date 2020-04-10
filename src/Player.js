@@ -74,6 +74,10 @@ export default class Player extends React.Component {
   //   window.location.href = `/${friendId}`
   //   // window.location.reload(false);
   // }
+  refreshPage(friendId) {
+    window.location.href = `/player/${friendId}`
+    // window.location.reload(false);
+  }
 
   render () {
     // const friendNodes = this.state.friends.map (friend => <Link onClick={e => this.refreshPage(friend.friendId)} to={`/${friend.friend}`}><li key={friend._id}>{friend.friend}</li></Link>);
