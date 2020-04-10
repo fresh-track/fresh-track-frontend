@@ -124,7 +124,7 @@ export default class Player extends React.Component {
       <div className='visualizer'>
       {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
       </div>
-      <div style={{display: this.state.open ? 'block' : 'none'}}>{ bandcampRender() }</div>
+      <div className = 'bandcamp-bottom' style={{display: this.state.open ? 'block' : 'none'}}>{ bandcampRender() }</div>
         <ReactJkMusicPlayer customDownloader={customDownloader} {...options} />
       </div>
       </div>

@@ -8,8 +8,6 @@
   justify-content: center;
   flex-wrap: wrap;
   margin: auto;
-  /* max-width: 200px;
-  max-width: 200px; */
 }
 
 .bandcamp {
@@ -32,6 +30,7 @@
   position: relative;
   display: inline-block;
 }
+
 .button {
   padding: 0;
   width: 50px;
