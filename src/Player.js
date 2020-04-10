@@ -20,14 +20,6 @@ function bandcampRender(){
   }
 };
 
-function userBandcamp(username) {
-  console.log(username)
-  if(username === 'whatever2') {
-    return <button onClick={this.onSwitch} className='bandcamp-button'>
-    {!this.state.open ? 'bandcamp' : 'close'}
-  </button>
-  }
-}
 
 
 export default class Player extends React.Component {
@@ -44,6 +36,16 @@ export default class Player extends React.Component {
       open: !this.state.open,
     });
   }
+
+   userBandcamp(username) {
+    console.log(username)
+    if(username === 'whatever2') {
+      return <button onClick={this.onSwitch} className='bandcamp-button'>
+      {!this.state.open ? 'bandcamp' : 'close'}
+    </button>
+    }
+  }
+  
 
   async componentDidMount() {
     // this.returnPlayer();
@@ -126,7 +128,7 @@ export default class Player extends React.Component {
             </div>
           )}
         </div>
-        { userBandcamp(this.props.user.username) }
+        { this.userBandcamp(this.props.user.username) }
         {/* <button onClick={this.onSwitch} className='bandcamp-button'>
             {!this.state.open ? 'bandcamp' : 'close'}
           </button> */}

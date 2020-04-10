@@ -33,15 +33,15 @@ export default class Login extends Component {
         if (!this.state.logged) {
             return <div className="signlogdiv">
                 <form onSubmit={this.handleSignUp}>
-                <TextField id="standard-basic" label="Username" className="signUpUsername" type="username" value={this.state.usernameSignUp} onChange={(e) => this.setState({ usernameSignUp: e.target.value })} />
-                <TextField id="standard-basic" label="Email" className="signUpEmail" type="email" value={this.state.emailSignUp} onChange={(e) => this.setState({ emailSignUp: e.target.value })} />
-                <TextField id="standard-password-input" label="Password" type="password" autoComplete="current-password" value={this.state.passwordSignUp} onChange={(e) => this.setState({ passwordSignUp: e.target.value })} />
+                <TextField id="standard-basic" label="Username" className="signUpUsername" type="text" value={this.state.usernameSignUp} onChange={(e) => this.setState({ usernameSignUp: e.target.value })} /><br></br>
+                <TextField id="standard-basic" label="Email" className="signUpEmail" type="text" value={this.state.emailSignUp} onChange={(e) => this.setState({ emailSignUp: e.target.value })} /><br></br>
+                <TextField id="standard-password-input" label="Password" type="password" autoComplete="current-password" value={this.state.passwordSignUp} onChange={(e) => this.setState({ passwordSignUp: e.target.value })} /><br></br>
                 <Button id="signupButton" variant="contained" color="primary" size="small" className="button" type="submit" onClick={this.handleSignUp}>Sign up</Button></form>
             </div>
         } else {
             return <div className="signlogdiv">
                 <form onSubmit={this.handleSignIn}>
-                <TextField id="standard-basic" label="Email" className="signInEmail" type="email" value={this.state.emailSignIn} onChange={(e) => this.setState({ emailSignIn: e.target.value })} />
+                <TextField id="standard-basic" label="Email" className="signInEmail" type="text" value={this.state.emailSignIn} onChange={(e) => this.setState({ emailSignIn: e.target.value })} /><br></br>
                 <TextField id="standard-password-input" label="Password" type="password" autoComplete="current-password" value={this.state.passwordSignIn} onChange={(e) => this.setState({ passwordSignIn: e.target.value })} />
                 
                 <Button id="loginButton" variant="contained" color="primary" size="small" className="button" type="submit">Login</Button></form>
@@ -56,8 +56,6 @@ export default class Login extends Component {
                 email: this.state.emailSignIn,
                 password: this.state.passwordSignIn,
             }).withCredentials();
-            // console.log(signIn.headers);
-            // console.log(signIn.header);
             localStorage.setItem('user', JSON.stringify(signIn.body));
             this.props.setUser(signIn);
             this.props.history.push('/player');
