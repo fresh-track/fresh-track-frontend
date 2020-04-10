@@ -93,8 +93,6 @@ export default class Player extends React.Component {
     }
     return (
       <div>
-        
-      
       <div className="container" ref={this.container}>
           <button type="button" className="button" onClick={this.handleButtonClick}>
             ☰
@@ -109,7 +107,7 @@ export default class Player extends React.Component {
           )}
         </div>
         { this.userBandcamp(this.props.user.username) }
-        <div className="player">
+      <div className="player">
       <div className='visualizer'>
       {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
       </div>
