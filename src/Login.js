@@ -22,10 +22,6 @@ export default class Login extends Component {
         open: false
     }
 
-    // openSB = () => {
-    //     this.setState({ open: true })
-    // };
-
     closeSB = (event, reason) => {
         if (reason === 'clickaway') {
             return;

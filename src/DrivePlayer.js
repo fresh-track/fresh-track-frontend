@@ -7,14 +7,18 @@ const grabDrive = async (user) => {
   // console.log(user);
   const driveGet = await request.get(`${process.env.REACT_APP_DB_URL}/api/v1/user/${user}`);
   const driveToObject = (JSON.parse(driveGet.text));
-  const randomDrive = Math.floor(Math.random() * driveToObject.drives.length);
-  return driveToObject.drives[randomDrive];
+  let driveConvert = driveToObject.drives;
+  if (driveConvert < 1) {
+    const newDriveGet = await request.get(`http://fresh-track-staging.herokuapp.com/api/v1/drive/all`);
+    const newDriveToObject = (JSON.parse(newDriveGet.text));
+    driveConvert = newDriveToObject;
+  }
+  const randomDrive = Math.floor(Math.random() * driveConvert.length);
+  return driveConvert[randomDrive];
 }
 
 function driveRender(drive){
-  // console.log(drive)
   const driveArr = drive.audioFiles;
-  // console.log(drive)
   if(driveArr.length > 0){
     return driveArr.map((value, index) => {
       return {
@@ -38,7 +42,6 @@ function driveRender(drive){
 export default class DrivePlayer extends Component {
   state = { audioList: null }
   async componentDidMount() {
-    // console.log(this.props.user)
     const drive = this.props.match.params.friendId ? await grabDrive(this.props.match.params.friendId) : await grabDrive(this.props.user._id);
     console.log(drive);
     // const drive = await grabDrive(this.props.user);

@@ -20,9 +20,9 @@ function bandcampRender(){
   }
 };
 
-function userBandcamp(user) {
-  console.log(user)
-  if(user === 'whatever2') {
+function userBandcamp(username) {
+  console.log(username)
+  if(username === 'whatever2') {
     return <button onClick={this.onSwitch} className='bandcamp-button'>
     {!this.state.open ? 'bandcamp' : 'close'}
   </button>
@@ -126,6 +126,7 @@ export default class Player extends React.Component {
             </div>
           )}
         </div>
+        { userBandcamp(this.props.user.username) }
         {/* <button onClick={this.onSwitch} className='bandcamp-button'>
             {!this.state.open ? 'bandcamp' : 'close'}
           </button> */}
@@ -134,7 +135,7 @@ export default class Player extends React.Component {
       {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
       </div>
       <div className = 'bandcamp-bottom' style={{display: this.state.open ? 'block' : 'none'}}>{ bandcampRender() }</div>
-      { userBandcamp() }
+      
         <ReactJkMusicPlayer customDownloader={customDownloader} {...options} />
       </div>
       </div>
