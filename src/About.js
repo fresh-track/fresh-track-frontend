@@ -11,7 +11,7 @@ export default class About extends Component {
         <h1> the fresh-track trio </h1>
         
         <p> 
-        The fresh-track team is brought to you by a Portland, Or dev trio dedicated to bringing music lovers a new kind of music sharing experience. Fresh-track is a unique file repository that allows artists to upload, share, and collaborate on their unreleased music tracks from their Soundcloud, Bandcamp, Google Drive and Drop Box music libraries.
+        The fresh-track team is brought to you by a Portland, Or dev team dedicated to bringing music lovers a new kind of music sharing experience. Fresh-track is a unique file repository that allows artists to upload, share, and collaborate on their unreleased music tracks from their Soundcloud, Bandcamp, Google Drive and Drop Box music libraries.
         </p>
        
         <div className="team-container">
