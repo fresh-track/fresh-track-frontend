@@ -71,7 +71,7 @@ export default class Player extends React.Component {
   // };
 
   refreshPage(friendId) {
-    window.location.href = `/${friendId}`
+    window.location.href = `/player/${friendId}`
     // window.location.reload(false);
   }
 
