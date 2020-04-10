@@ -29,7 +29,7 @@ export default class App extends React.Component {
         <BrowserRouter>
         <Header user={this.state.user} setUser={this.setUser}/>
             <Switch>
-            <PrivateRoute exact path="/" component={DrivePlayer} user={this.state.user}/>
+            <PrivateRoute exact path="/:friendId?" component={DrivePlayer} user={this.state.user}/>
             <Route exact path="/login" render={(props) => <Login {...props} setUser={this.setUser} user={this.state.user}/>}  />
             <PrivateRoute exact path='/profile' component={Profile} user={this.state.user}/>
             {/* <Route exact path='/profile' component={Profile} /> */}
