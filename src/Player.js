@@ -20,6 +20,15 @@ function bandcampRender(){
   }
 };
 
+function userBandcamp(user) {
+  console.log(user)
+  if(user === 'whatever2') {
+    return <button onClick={this.onSwitch} className='bandcamp-button'>
+    {!this.state.open ? 'bandcamp' : 'close'}
+  </button>
+  }
+}
+
 
 export default class Player extends React.Component {
   //bandcamp display state
@@ -41,7 +50,7 @@ export default class Player extends React.Component {
     const getFriends = await request.get(`${process.env.REACT_APP_DB_URL}/api/v1/user/${this.props.user._id}`).withCredentials()
     const audio = document.querySelector('audio')
     this.setState({friends: getFriends.body.followedUsers})
-    console.log(this.state.friends)
+    // console.log(this.state.friends)
     this.setState({audio})
     document.addEventListener("mousedown", this.handleClickOutside);
   }
@@ -117,14 +126,15 @@ export default class Player extends React.Component {
             </div>
           )}
         </div>
-        <button onClick={this.onSwitch} className='bandcamp-button'>
+        {/* <button onClick={this.onSwitch} className='bandcamp-button'>
             {!this.state.open ? 'bandcamp' : 'close'}
-          </button>
+          </button> */}
         <div className="player">
       <div className='visualizer'>
       {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
       </div>
       <div className = 'bandcamp-bottom' style={{display: this.state.open ? 'block' : 'none'}}>{ bandcampRender() }</div>
+      { userBandcamp() }
         <ReactJkMusicPlayer customDownloader={customDownloader} {...options} />
       </div>
       </div>

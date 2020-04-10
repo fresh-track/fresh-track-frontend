@@ -60,8 +60,8 @@ export default class Login extends Component {
                 email: this.state.emailSignIn,
                 password: this.state.passwordSignIn,
             }).withCredentials();
-            console.log(signIn.headers);
-            console.log(signIn.header);
+            // console.log(signIn.headers);
+            // console.log(signIn.header);
             localStorage.setItem('user', JSON.stringify(signIn.body));
             this.props.setUser(signIn);
             this.props.history.push('/player');

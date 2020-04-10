@@ -4,7 +4,7 @@ import request from 'superagent'
 
 const grabDrive = async (user) => {
   // const driveGet = this.props.match.params.friendId ? await request.get(`${process.env.REACT_APP_DB_URL}/api/v1/user/${this.props.match.params.friendId}`) : await request.get(`${process.env.REACT_APP_DB_URL}/api/v1/user/${user._id}`);
-  console.log(user);
+  // console.log(user);
   const driveGet = await request.get(`${process.env.REACT_APP_DB_URL}/api/v1/user/${user}`);
   const driveToObject = (JSON.parse(driveGet.text));
   const randomDrive = Math.floor(Math.random() * driveToObject.drives.length);
