@@ -2,19 +2,22 @@ import React, { Component } from 'react'
 import Player from './Player'
 import request from 'superagent'
 
-const grabDrive = async () => {
-  const driveGet = await request.get(`${process.env.REACT_APP_DB_URL}/api/v1/drive/all`);
+const grabDrive = async (user) => {
+  const driveGet = await request.get(`${process.env.REACT_APP_DB_URL}/api/v1/user/${user._id}`);
   const driveToObject = (JSON.parse(driveGet.text));
-  return driveToObject[0];
+  const randomDrive = Math.floor(Math.random() * driveToObject.drives.length);
+  return driveToObject.drives[randomDrive];
 }
 
 function driveRender(drive){
+  console.log(drive)
   const driveArr = drive.audioFiles;
+  console.log(drive)
   if(driveArr.length > 0){
     return driveArr.map((value, index) => {
       return {
         name: `${value.name}`,
-        singer: `${drive._id}`,
+        singer: `${drive.driveFolder}`,
         cover: 'https://emby.media/community/uploads/inline/355992/5c1cc71abf1ee_genericcoverart.jpg',
         musicSrc: () => {
           return fetch(`${value.url}`, {
@@ -33,7 +36,8 @@ function driveRender(drive){
 export default class DrivePlayer extends Component {
   state = { audioList: null }
   async componentDidMount() {
-    const drive = await grabDrive();
+    console.log(this.props.user)
+    const drive = await grabDrive(this.props.user);
     const audioList = await driveRender(drive);
     this.setState({ audioList });
   }
