@@ -17,7 +17,8 @@ function driveRender(drive){
         singer: `${drive._id}`,
         cover: 'https://emby.media/community/uploads/inline/355992/5c1cc71abf1ee_genericcoverart.jpg',
         musicSrc: () => {
-          return fetch(`${value.url}`, {
+          // return fetch(`${value.url}`, {
+            return fetch(`https://fresh-track-anywhere.herokuapp.com/${value.url}`, {
             headers: {
               origin: null
             }
