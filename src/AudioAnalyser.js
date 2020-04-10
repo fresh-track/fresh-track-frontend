@@ -9,14 +9,12 @@ class AudioAnalyser extends Component {
   }
   
   componentDidMount() {
-    // console.log(this.props.audio)
     this.audioContext = new (window.AudioContext ||
       window.webkitAudioContext)();
     this.analyser = this.audioContext.createAnalyser();
     this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
     this.source = this.audioContext.createMediaElementSource(this.props.audio);
     this.source.connect(this.analyser).connect(this.audioContext.destination);
-    // this.source.connect(this.analyser);
     this.rafId = requestAnimationFrame(this.tick);
   }
 

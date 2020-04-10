@@ -2,13 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-// import Button from '@material-ui/core/Button';
 import './Header.css';
 
 export default class Header extends Component {
-  // logOutButton = () => {
-  //   if (this.props.user) return <div className="login-div"><Button variant="contained" color="primary" size="small" className="button" onClick={e => this.handleLogOut()}>Logout</Button></div>;
-  // }
 
   logOutButton = () => {
     if (this.props.user) return <div className="login-div" onClick={e => this.handleLogOut()}>logout</div>;
@@ -17,7 +13,6 @@ export default class Header extends Component {
   handleLogOut = () => {
     localStorage.clear();
     this.props.setUser({ body: null });
-    // this.props.history.push('/');
   }
   render() {
     return (

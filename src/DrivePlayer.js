@@ -41,8 +41,6 @@ export default class DrivePlayer extends Component {
   state = { audioList: null }
   async componentDidMount() {
     const drive = this.props.match.params.friendId ? await grabDrive(this.props.match.params.friendId) : await grabDrive(this.props.user._id);
-    console.log(drive);
-    // const drive = await grabDrive(this.props.user);
     const audioList = await driveRender(drive);
     this.setState({ audioList });
   }

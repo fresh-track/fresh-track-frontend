@@ -5,11 +5,8 @@ import AudioAnalyser from './AudioAnalyser';
 import './Player.css';
 import request from 'superagent';
 import { Link } from 'react-router-dom';
-// http://fresh-track-staging.herokuapp.com/api/v1/drive/all
 
 let bandcampArr = [1413157771, 4037375649, 2926175440, 4267872102, 2358433489, 3535544007];
-// let driveArrOld = ['1iSDrOQH7IG8OFczKrVX19IyAlO5HNDfX', '135T3wOSF_o6VMamNfmrgt9kfTbVucWDE', '1grL_7KMiGpzAJU4jP6dBLq-9RzfyD70l'];
-// let audioList1;
 
 //function to conditionally render bandcamp iframes only if there are items in the bandcampArr
 function bandcampRender(){
@@ -19,7 +16,6 @@ function bandcampRender(){
     })
   }
 };
-
 
 export default class Player extends React.Component {
   //bandcamp display state
@@ -40,18 +36,13 @@ export default class Player extends React.Component {
     console.log(username)
     if(username === 'whatever2') {
       return <input onClick={this.onSwitch} alt = "bandcamp image" id='bcimage' type="image" name="submit" value="submit" src="../bc.png" />
-      // {!this.state.open ? '' : ''}
-    // </button>
     }
   }
-  // return <button onClick={this.onSwitch} className='bandcamp-button' style={{display: 'block', background: 'url(../bc.png)'}}>
 
   async componentDidMount() {
-    // this.returnPlayer();
     const getFriends = await request.get(`${process.env.REACT_APP_DB_URL}/api/v1/user/${this.props.user._id}`).withCredentials()
     const audio = document.querySelector('audio')
     this.setState({friends: getFriends.body.followedUsers})
-    // console.log(this.state.friends)
     this.setState({audio})
     document.addEventListener("mousedown", this.handleClickOutside);
   }
@@ -76,17 +67,8 @@ export default class Player extends React.Component {
     });
   };
 
-  // handleRefresh = (friendId) => {
-  //   window.location.href = `/${friendId}`
-  // };
-
-  // refreshPage(friendId) {
-  //   window.location.href = `/${friendId}`
-  //   // window.location.reload(false);
-  // }
   refreshPage(friendId) {
     window.location.href = `/player/${friendId}`
-    // window.location.reload(false);
   }
 
   render () {
@@ -109,7 +91,6 @@ export default class Player extends React.Component {
       document.body.appendChild(link)
       link.click()
     }
-    // console.log(this.state)
     return (
       <div>
         
@@ -128,9 +109,6 @@ export default class Player extends React.Component {
           )}
         </div>
         { this.userBandcamp(this.props.user.username) }
-        {/* <button onClick={this.onSwitch} className='bandcamp-button'>
-            {!this.state.open ? 'bandcamp' : 'close'}
-          </button> */}
         <div className="player">
       <div className='visualizer'>
       {this.state.audio && <AudioAnalyser audio={this.state.audio} />}
