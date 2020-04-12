@@ -29,6 +29,7 @@ export default class Login extends Component {
         this.setState({ open: false })
     };
 
+    // this is an anti-pattern. make components instead
     signUpOrLogin = () => {
         if (!this.state.logged) {
             return <div className="signlogdiv">
@@ -52,12 +53,12 @@ export default class Login extends Component {
     handleSignIn = async (e) => {
         e.preventDefault();
         try {
-            const signIn = await request.post(`${process.env.REACT_APP_DB_AUTH_URL}/login`, {
+            const { body } = await request.post(`${process.env.REACT_APP_DB_AUTH_URL}/login`, {
                 email: this.state.emailSignIn,
                 password: this.state.passwordSignIn,
             }).withCredentials();
-            localStorage.setItem('user', JSON.stringify(signIn.body));
-            this.props.setUser(signIn);
+            localStorage.setItem('user', JSON.stringify(body));
+            this.props.setUser(body);
             this.props.history.push('/player');
 
         } catch (err) {
@@ -83,13 +84,14 @@ export default class Login extends Component {
         }
     }
 
+    // this is an anti-pattern make components instead
     logOutButton = () => {
         if (this.props.user) return <div className="login-div"><Button variant="contained" color="secondary" size="small" id="logoutbutton" className="logoutButton" onClick={e => this.handleLogOut()}>Logout</Button></div>;
     }
 
     handleLogOut = () => {
         localStorage.clear();
-        this.props.setUser({ body: null });
+        this.props.setUser(null);
         this.props.history.push('/login');
     }
 

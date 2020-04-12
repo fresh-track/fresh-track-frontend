@@ -3,6 +3,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub, faBandcamp } from '@fortawesome/free-brands-svg-icons';
 import './About.css';
 
+// create components to prevent duplicate jsx
+const Developer = ({ name, linkedin, github, img }) => (
+  <div className="photo">
+    <h2>{name}</h2>
+    <img src={img} alt={name} />
+    <div className="social-icons">
+      <a href={`https://www.linkedin.com/in/${linkedin}/`} className="Linkedin social" target="_blank" rel="noopener noreferrer" >
+        <FontAwesomeIcon icon={faLinkedin} size="2x" />
+      </a>
+      <a href={`https://github.com/${github}`} className="GitHub social" target="_blank" rel="noopener noreferrer" >
+        <FontAwesomeIcon icon={faGithub} size="2x" />
+      </a>
+    </div>
+  </div>
+)
+
 export default class About extends Component {
   render() {
     return (
@@ -15,40 +31,21 @@ export default class About extends Component {
         </p>
        
         <div className="team-container">
+          <Developer name="chris ficht"
+            img="Chris_Ficht.jpg"
+            linkedin="chrisficht"
+            github="cficht" />
 
-          <div className="photo">
-            <h2>chris ficht</h2>
-                <img src='Chris_Ficht.jpg' alt="Chris" />
-                  <div className="social-icons">
-                    <a href="https://www.linkedin.com/in/chrisficht/" className="Linkedin social" target="_blank" rel="noopener noreferrer" >
-                       <FontAwesomeIcon icon={faLinkedin} size="2x" /> </a>
-                    <a href="https://github.com/cficht" className="GitHub social" target="_blank" rel="noopener noreferrer" >
-                       <FontAwesomeIcon icon={faGithub} size="2x" /></a>
-                </div>
-            </div>            
+          <Developer name="mikey romay"
+            img="Mikey_Romay.jpg"
+            linkedin="michaelromay"
+            github="mikeymasonic" />
+
+          <Developer name="will piro"
+            img="Will_Piro.jpg"
+            linkedin="willpiro"
+            github="shaka2pass" />     
             
-
-          <div className="photo">
-              <h2>mikey romay</h2>
-                <img src='Mikey_Romay.jpg' alt="Mikey Romay" />
-                  <div className="social-icons">
-                    <a href="https://www.linkedin.com/in/michaelromay/" className="Linkedin social" target="_blank" rel="noopener noreferrer" >
-                      <FontAwesomeIcon icon={faLinkedin} size="2x" /></a>
-                    <a href="https://github.com/mikeymasonic" className="GitHub social" target="_blank" rel="noopener noreferrer">
-                      <FontAwesomeIcon icon={faGithub} size="2x" /></a>
-                </div>
-          </div>
-
-          <div className="photo">
-              <h2>will piro</h2>
-                <img src='Will_Piro.jpg' alt="Will" />
-                  <div className="social-icons">
-                    <a href="https://www.linkedin.com/in/willpiro/" className="Linkedin social" target="_blank" rel="noopener noreferrer">
-                      <FontAwesomeIcon icon={faLinkedin} size="2x" /></a>
-                    <a href="https://github.com/shaka2pass" className="GitHub social" target="_blank" rel="noopener noreferrer">
-                      <FontAwesomeIcon icon={faGithub} size="2x" /></a>
-                    </div>
-                  </div>
         </div>
       </div>
                    

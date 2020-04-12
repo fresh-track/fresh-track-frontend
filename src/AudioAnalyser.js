@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import AudioVisualizer from './AudioVisualizer';
 
 class AudioAnalyser extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { audioData: new Uint8Array(0) };
-    this.tick = this.tick.bind(this);
+  // some of your components use the older constructor syntax, others use
+  // the more modern class property syntax. pick one
+  state = {
+    audioData: new Uint8Array(0)
   }
-  
+
   componentDidMount() {
-    this.audioContext = new (window.AudioContext ||
-      window.webkitAudioContext)();
-    this.analyser = this.audioContext.createAnalyser();
+    // audioContext does not need to be added as a class property
+    const audioContext = new (AudioContext || webkitAudioContext)();
+    this.analyser = audioContext.createAnalyser();
     this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
-    this.source = this.audioContext.createMediaElementSource(this.props.audio);
-    this.source.connect(this.analyser).connect(this.audioContext.destination);
+    this.source = audioContext.createMediaElementSource(this.props.audio);
+    this.source.connect(this.analyser).connect(audioContext.destination);
     this.rafId = requestAnimationFrame(this.tick);
   }
 

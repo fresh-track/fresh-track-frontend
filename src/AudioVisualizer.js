@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 
 class AudioVisualizer extends Component {
-  constructor(props) {
-    super(props);
-    this.canvas = React.createRef();
-  }
+  // use constructor or class properties.
+  canvas = createRef()
 
   componentDidUpdate() {
     this.draw();

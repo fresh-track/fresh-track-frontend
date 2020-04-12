@@ -19,24 +19,12 @@ function bandcampRender(){
 
 export default class Player extends React.Component {
   //bandcamp display state
+  container = React.createRef();
   state = {
     open: false,
     friendOpen: false,
     audio: null,
     friends: []
-  }
-
-  onSwitch = () => {
-    this.setState({
-      open: !this.state.open,
-    });
-  }
-
-   userBandcamp(username) {
-    console.log(username)
-    if(username === 'whatever2') {
-      return <input onClick={this.onSwitch} alt = "bandcamp image" id='bcimage' type="image" name="submit" value="submit" src="../bc.png" />
-    }
   }
 
   async componentDidMount() {
@@ -47,11 +35,27 @@ export default class Player extends React.Component {
     document.addEventListener("mousedown", this.handleClickOutside);
   }
   
-  container = React.createRef();
 
   componentWillUnmount() {
     document.removeEventListener("mousedown", this.handleClickOutside);
   }
+
+  onSwitch = () => {
+    // dependent state change. use arrow function
+    this.setState(state => ({
+      open: !state.open,
+    }));
+  }
+
+  // anti-pattern make this a component
+   userBandcamp(username) {
+    console.log(username)
+    if(username === 'whatever2') {
+      return <input onClick={this.onSwitch} alt = "bandcamp image" id='bcimage' type="image" name="submit" value="submit" src="../bc.png" />
+    }
+  }
+
+  
   handleClickOutside = event => {
     if (this.container.current && !this.container.current.contains(event.target)) {
       this.setState({
