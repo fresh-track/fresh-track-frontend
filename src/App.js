@@ -17,7 +17,7 @@ export default class App extends React.Component {
   state = { user: JSON.parse(localStorage.getItem('user')) };
 
   setUser = user => {
-    this.setState({ user: user.body })
+    this.setState({ user })
   }
 
   render () {
